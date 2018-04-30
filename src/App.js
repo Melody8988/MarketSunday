@@ -9,17 +9,22 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+import ManagePage from './components/ManagePage/ManagePage';
+import ResponsesPage from './components/ResponsesPage/ResponsesPage';
+import FrontPage from './components/FrontPage/FrontPage'
 
 import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header title="Market Sunday" />
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/frontPage" />
+        <Route
+          path="/frontPage"
+          component={FrontPage}
+        />
         <Route
           path="/home"
           component={LoginPage}
@@ -29,12 +34,12 @@ const App = () => (
           component={RegisterPage}
         />
         <Route
-          path="/user"
-          component={UserPage}
+          path="/manage"
+          component={ManagePage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/responses"
+          component={ResponsesPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

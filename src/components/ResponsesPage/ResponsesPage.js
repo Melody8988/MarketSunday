@@ -8,14 +8,14 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InfoPage extends Component {
+class ResponsesPage extends Component {
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
   }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('frontPage');
     }
   }
 
@@ -42,4 +42,4 @@ class InfoPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InfoPage);
+export default connect(mapStateToProps)(ResponsesPage);
