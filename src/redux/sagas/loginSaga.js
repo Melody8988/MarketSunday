@@ -5,6 +5,7 @@ import { callLogin, callLogout } from '../requests/loginRequests';
 
 // worker Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
+  console.log('getloginUser')
   try {
     yield put({ type: LOGIN_ACTIONS.CLEAR_LOGIN_ERROR });
     yield put({ type: LOGIN_ACTIONS.REQUEST_START });

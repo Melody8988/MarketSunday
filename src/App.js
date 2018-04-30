@@ -17,7 +17,7 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Market Sunday" />
+    <Header title="Title" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/frontPage" />
