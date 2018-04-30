@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Card, CardActions, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 import Nav from '../../components/Nav/Nav';
 
+//passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
-
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
 class ManagePage extends Component {
   componentDidMount() {
+    //grab specific user's information
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    //get specfic user's existing products
+    this.getImages();
+  }
+
+  getImages = () => {
+    this.props.dispatch({ type: 'GET_IMAGES' })
   }
 
   componentDidUpdate() {
@@ -33,11 +36,12 @@ class ManagePage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
+          <h3
             id="welcome"
           >
-            Welcome, { this.props.user.userName }!
-          </h1>
+            Welcome, {this.props.user.userName}! <br />
+            Manage Products Here
+          </h3>
           <button
             onClick={this.logout}
           >
@@ -50,12 +54,12 @@ class ManagePage extends Component {
     return (
       <div>
         <Nav />
-        { content }
+        {content}
       </div>
     );
   }
 }
 
-// this allows us to use <App /> in index.js
+const mapStateToProps = state => ({user: state.user,});
 export default connect(mapStateToProps)(ManagePage);
 
