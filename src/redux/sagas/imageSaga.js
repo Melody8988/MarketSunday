@@ -1,11 +1,11 @@
 import {call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* imageSaga(action) {
+function* getimagesSaga(action) {
     console.log('in imageSaga')
     try {
         console.log('ACTION:', action)
-        const existingProducts = yield call(axios.get, '/api/user', action.payload);
+        const existingProducts = yield call(axios.get, '/api/shop', action.payload);
         console.log('got items', existingProducts);
         yield put({
             type: 'SET_IMAGES',
@@ -18,7 +18,7 @@ function* imageSaga(action) {
 
 
 function* imageSaga(){
-    yield takeEvery('GET_IMAGES', imageSaga);
+    yield takeEvery('GET_IMAGES', getimagesSaga);
 }
 
 export default imageSaga;
