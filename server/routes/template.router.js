@@ -15,6 +15,21 @@ router.get('/', (req, res) => {
     })//end catch
 })//end get
 
+//UPDATE existing product title from postgreSQL
+router.put('/:id', (req, res)=>{
+    console.log('update title', req.body, req.params);
+    const productTitle = req.body;
+    const titleId = req.params.id;
+    const queryText = `UPDATE "galleryitems" SET "title" = $1 WHERE "id" = $2;`;
+    pool.query(queryText, [productTitle.title, titleId])
+        .then((response) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error updating title', error);
+            res.sendStatus(500);
+        });//end catch
+});//end put
+
 /**
  * POST route template
  */

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Card, CardActions, CardMedia, CardHeader, CardText } from 'material-ui/Card'
+import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 
 class FrontPage extends Component {
     constructor(props) {
@@ -28,20 +28,20 @@ class FrontPage extends Component {
                             <p>{product.title}</p>
                         </CardHeader>
                         <CardMedia>
-                            <img className="productImages" src={product.image_url} width='60%' />
+                            <img className="productImages" src={product.image_url} width='60%' alt=""/>
                         </CardMedia>
                         <CardText>
                             <p>{product.description}</p>
                         </CardText>
+                        {/* inner card includes input form  */}
                         <Card>
-                            <p>Message the vendor:</p>
+                            <p>Message the vendor about this product:</p>
                             <input placeholder="Name"></input><br/>
                             <input placeholder="Email"></input><br/>
                             <input placeholder="Message"></input><br/>
                             <button>Send!</button>
                         </Card>
                     </Card>
-                    {/* inner card includes input form  */}
                 </div>
             )
         })
