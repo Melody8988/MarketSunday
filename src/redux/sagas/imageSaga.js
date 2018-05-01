@@ -16,9 +16,13 @@ function* getimagesSaga(action) {
     }
 }
 
+function* updateTitleSaga(action){
+    console.log('in updateTitleSaga')
+}
 
 function* imageSaga(){
     yield takeEvery('GET_IMAGES', getimagesSaga);
+    yield takeEvery('UPDATE_TITLE', updateTitleSaga)
 }
 
 export default imageSaga;

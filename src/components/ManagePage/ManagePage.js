@@ -37,6 +37,10 @@ class ManagePage extends Component {
     console.log(this.state.editingTitle)
   }
 
+  handleSave = () => {
+    console.log('you clicked save!')
+  }
+
   handleTitleChange = (event) => {
     console.log(event.target.value)
     this.props.dispatch({
