@@ -6,10 +6,18 @@ import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 class ProductItem extends Component {
     constructor(props) {
         super(props)
-        this.state = { editingTitle: false }
+        this.state = 
+            { 
+                editingTitle: false, 
+                id: this.props.product.id,
+                title: this.props.product.title
+
+            }
+
       }
 
 handleEdit = (event) => {
+
     console.log('you clicked edit title!');
     this.setState({
       editingTitle: !this.state.editingTitle
@@ -17,16 +25,18 @@ handleEdit = (event) => {
     console.log(this.state.editingTitle)
     this.props.dispatch({
         type: 'UPDATE_TITLE',
-        payload: this.state.newTitle, 
+        payload: this.state
       })
-    console.log(this.state.newTitle)
+    console.log(this.state.title)
+    console.log('this.state', this.state)
   }
 
 
-  handleTitleChange = (event) => {
+  handleTitleChange = propertyName => (event) => {
     console.log('in handleChange')
     this.setState({
-        newTitle: event.target.value,
+        [propertyName]: event.target.value
+        // newTitle: event.target.value,
       });
     
   }
@@ -34,11 +44,12 @@ handleEdit = (event) => {
   render() {
 
    //Toggle what title looks like whether it is being edited or not 
+   console.log(this.state)
    let title;
    if (this.state.editingTitle === true) {
      title = (
        <div>
-         <textarea defaultValue={this.props.product.title} onChange={this.handleTitleChange}></ textarea>
+         <textarea defaultValue={this.props.product.title} onChange={this.handleTitleChange('title')} ></ textarea>
          <button onClick={this.handleEdit}>Save</button>
        </div>
      )

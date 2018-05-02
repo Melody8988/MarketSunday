@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 //UPDATE existing product title from postgreSQL
 router.put('/:id', (req, res)=>{
     console.log('update title', req.body, req.params);
-    const productTitle = req.body;
+    const productTitle = req.body.title;
     const titleId = req.params.id;
     const queryText = `UPDATE "galleryitems" SET "title" = $1 WHERE "id" = $2;`;
-    pool.query(queryText, [productTitle.title, titleId])
+    pool.query(queryText, [productTitle, titleId])
         .then((response) => {
             res.sendStatus(200);
         }).catch((error) => {

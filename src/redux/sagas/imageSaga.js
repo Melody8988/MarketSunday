@@ -21,15 +21,15 @@ function* getimagesSaga(action) {
 function* updateTitleSaga(action){
     console.log('in updateTitleSaga')
     try{
-        console.log('ACTION ID:', action.payload)
-        const newTitle = yield call(axios.put, '/api/shop' + action.payload + {title: action.payload});
+        console.log('ACTION:', action.payload)
+        const newTitle = yield call(axios.put, '/api/shop/' + action.payload.id, {title: action.payload.title});
         console.log('posted new title', newTitle);
         yield put({
             type: 'UPDATED_TITLES', 
             payload: newTitle
         })
     } catch (error) {
-        console.log('updateTitleSaga', error)
+        console.log('CANNOT updateTitleSaga', error)
     }
 }
 
