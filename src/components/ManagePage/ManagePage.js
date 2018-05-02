@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 import Nav from '../../components/Nav/Nav';
+import ProductIems from './ProductItems'
 
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -129,7 +130,7 @@ class ManagePage extends Component {
         <h1>Shop name</h1>
         <h2>Shop info</h2>
         <h3>Shop contact</h3>
-        {frontPageProducts}
+        {/* {frontPageProducts} */}
       </div>
     );
   }
