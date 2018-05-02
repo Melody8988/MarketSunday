@@ -9,24 +9,26 @@ class ProductItem extends Component {
         this.state = { editingTitle: false }
       }
 
-handleEdit = () => {
+handleEdit = (event) => {
     console.log('you clicked edit title!');
     this.setState({
       editingTitle: !this.state.editingTitle
     });
     console.log(this.state.editingTitle)
+    this.props.dispatch({
+        type: 'UPDATE_TITLE',
+        payload: this.state.newTitle, 
+      })
+    console.log(this.state.newTitle)
   }
 
-  handleSave = () => {
-    console.log('you clicked save!')
-  }
 
   handleTitleChange = (event) => {
-    console.log(event.target.value)
-    this.props.dispatch({
-      type: 'UPDATE_TITLE',
-      payload: event.target.value
-    })
+    console.log('in handleChange')
+    this.setState({
+        newTitle: event.target.value,
+      });
+    
   }
 
   render() {
