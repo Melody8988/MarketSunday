@@ -9,14 +9,16 @@ class ProductItem extends Component {
         this.state =
             {
                 editingTitle: false,
+                editingDescription: false, 
                 id: this.props.product.id,
-                title: this.props.product.title
+                title: this.props.product.title, 
+                description: this.props.product.description
 
             }
     }
 
 
-    handleEdit = (event) => {
+    handleEditTitle = (event) => {
         console.log('you clicked edit title!');
         this.setState({
             editingTitle: !this.state.editingTitle
@@ -28,22 +30,32 @@ class ProductItem extends Component {
         })
         console.log(this.state.title)
         console.log('this.state', this.state)
-        this.getImages();
     }
 
-    getImages = () => {
-        this.props.getImages(this.props.product)
+    handleEditDescription = (event) => {
+        console.log('you clicked edit description!');
+        this.setState({
+            editingDescription: !this.state.editingDescription
+        });
+        console.log(this.state.editingDescription)
+        this.props.dispatch({
+            type: 'UPDATE_TITLE',
+            payload: this.state
+        })
+        console.log(this.state.description)
+        console.log('this.state', this.state)
+     
     }
-    
-    
-   
 
-    handleTitleChange = propertyName => (event) => {
+    
+    handleChange = propertyName => (event) => {
         console.log('in handleChange')
         this.setState({
             [propertyName]: event.target.value
         });
     }
+
+    
 
     render() {
 
@@ -53,13 +65,26 @@ class ProductItem extends Component {
         if (this.state.editingTitle === true) {
             title = (
                 <div>
-                    <textarea defaultValue={this.props.product.title} onChange={this.handleTitleChange('title')} ></ textarea>
-                    <button onClick={this.handleEdit}>Save</button>
+                    <textarea defaultValue={this.props.product.title} onChange={this.handleChange('title')} ></ textarea>
+                    <button onClick={this.handleEditTitle}>Save</button>
                 </div>
             )
         } else {
-            title = (<p onClick={this.handleEdit}>{this.props.product.title}</p>)
+            title = (<p onClick={this.handleEditTitle}>{this.props.product.title}</p>)
         }
+
+        let description;
+        if (this.state.editingDescription === true) {
+            description = (
+                <div>
+                    <textarea defaultValue={this.props.product.description} onChange={this.handleChange('description')} ></ textarea>
+                    <button onClick={this.handleEditDescription}>Save</button>
+                </div>
+            )
+        } else {
+            description = (<p onClick={this.handleEditDescription}>{this.props.product.description}</p>)
+        }
+
 
         //display products as cards
         return (
@@ -74,7 +99,7 @@ class ProductItem extends Component {
                         <img className="productImages" src={this.props.product.image_url} width='60%' alt="" />
                     </CardMedia>
                     <CardText>
-                        <p>{this.props.product.description}</p>
+                        {description}
                     </CardText>
                     {/* inner card includes input form  */}
                     <Card>
