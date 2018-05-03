@@ -32,26 +32,26 @@ function* updateTitleSaga(action){
     }
 }
 
-// //SAGA TO UPDATE DESCRIPTION TITLE ON DB
-// function* updateDescriptionSaga(action){
-//     console.log('in updateDescriptionSaga')
-//     try{
-//         console.log('ACTION:', action.payload)
-//         const newDescription = yield call(axios.put, '/api/shop/' + action.payload.id, {description: action.payload.description});
-//         console.log('posted new description', newDescription);
-//         yield put({
-//             type: 'GET_IMAGES',
-//         })
-//     } catch (error) {
-//         console.log('CANNOT updateDescriptionSaga', error)
-//     }
-// }
-
+function* addImageSaga(action){
+    console.log('in addImageSaga')
+    try{
+        console.log('ACTION:', action.payload)
+        const allNewImages = yield call (axios.post, '/api/shop', action.payload);
+        console.log('added new image', allNewImages);
+        yield put ({
+            type: 'GET_IMAGES',
+            payload: allNewImages.data
+        })
+    } catch (error) {
+        console.log('addImageSaga error:', error)
+    }
+}
 
 function* imageSaga(){
     yield takeEvery('GET_IMAGES', getimagesSaga);
-    yield takeEvery('UPDATE_TITLE', updateTitleSaga)
+    yield takeEvery('UPDATE_TITLE', updateTitleSaga);
     // yield takeEvery('UPDATE_DESCRIPTION', updateDescriptionSaga)
+    yield takeEvery ('ADD_IMAGE', addImageSaga)
 }
 
 export default imageSaga;

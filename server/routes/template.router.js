@@ -31,25 +31,18 @@ router.put('/:id', (req, res)=>{
         });//end catch
 });//end put
 
-// //UPDATE existing product DESCRIPTION from postgreSQL
-// router.put('/:id', (req, res)=>{
-//     console.log('update description', req.body, req.params);
-//     const productDescription = req.body.description;
-//     const descriptionId = req.params.id;
-//     const queryText = `UPDATE "galleryitems" SET "description" = $1 WHERE "id" = $2;`;
-//     pool.query(queryText, [productDescription, descriptionId])
-//         .then((response) => {
-//             res.sendStatus(200);
-//         }).catch((error) => {
-//             console.log('error updating description', error);
-//             res.sendStatus(500);
-//         });//end catch
-// });//end put
-
-/**
- * POST route template
- */
+//POST new IMAGE via filestack to postgreSQL
 router.post('/', (req, res) => {
+    const productImage = req.body;
+    const queryText = `INSERT INTO "galleryitems" ("title", "image_url", "description") VALUES ($1, $2, $3);` 
+    pool.query(queryText, [productImage.title, productImage.image_url, productImage.description]).then((response)=>{
+        console.log('Successfully added new image to db!');
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('Error posting new image:', error);
+        res.sendStatus(500);
+    })
+
 
 });
 

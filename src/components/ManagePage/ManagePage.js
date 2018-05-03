@@ -3,16 +3,24 @@ import { connect } from 'react-redux';
 // import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 import Nav from '../../components/Nav/Nav';
 import ProductItems from './ProductItems'
+import ReactFilestack, { client, options, AoFC5ga9oR5w2BF450Phlz} from 'filestack-react';
+import filestack from 'filestack-js';
 
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
 class ManagePage extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = { editingTitle: false }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      newImage: {
+        title: '',
+        image_url: '',
+        description: ''
+      }
+    }
+  }
   componentDidMount() {
     //grab specific user's information
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -35,17 +43,24 @@ class ManagePage extends Component {
     // this.props.history.push('home');
   }
 
+  addImage = () => {
+    this.props.dispatch({
+      type: 'ADD_IMAGE',
+      payload: this.state.newImage
+    })
+  }
+
   render() {
 
     //Map through all products 
     let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
       return (
         <ProductItems
-        key={product.id}
-        product={product}
-        getImages={this.getImages}
+          key={product.id}
+          product={product}
+          getImages={this.getImages}
         />
-    )
+      )
     })
 
     //if the user is logged in, show a greeting and give log out option
@@ -68,15 +83,25 @@ class ManagePage extends Component {
       );
     }
 
+    let addItemButton = (<ReactFilestack
+      apikey={AoFC5ga9oR5w2BF450Phlz}
+      buttonText="Click me"
+      buttonClass="classname"
+      options={options}
+      onSuccess={this.yourCallbackFunction}
+    />)
+
     return (
       <div>
         <div>
-          <Nav />
           {content}
+          <Nav />
+
         </div>
         <h1>Shop name</h1>
         <h2>Shop info</h2>
         <h3>Shop contact</h3>
+        {addItemButton}
         {frontPageProducts}
       </div>
     );

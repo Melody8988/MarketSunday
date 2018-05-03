@@ -9,11 +9,10 @@ class ProductItem extends Component {
         this.state =
             {
                 editingTitle: false,
-                editingDescription: false, 
+                editingDescription: false,
                 id: this.props.product.id,
-                title: this.props.product.title, 
+                title: this.props.product.title,
                 description: this.props.product.description
-
             }
     }
 
@@ -44,10 +43,10 @@ class ProductItem extends Component {
         })
         console.log(this.state.description)
         console.log('this.state', this.state)
-     
+
     }
 
-    
+
     handleChange = propertyName => (event) => {
         console.log('in handleChange')
         this.setState({
@@ -55,11 +54,10 @@ class ProductItem extends Component {
         });
     }
 
-    
 
     render() {
 
-        //Toggle what title looks like whether it is being edited or not 
+        //Toggle what title looks like whether it is being edited or not for TITLE 
         console.log(this.state)
         let title;
         if (this.state.editingTitle === true) {
@@ -70,9 +68,10 @@ class ProductItem extends Component {
                 </div>
             )
         } else {
-            title = (<p onClick={this.handleEditTitle}>{this.props.product.title}</p>)
+            title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}</p></div>)
         }
 
+        //Toggle what title looks like whether it is being edited or not for DESCRIPTION
         let description;
         if (this.state.editingDescription === true) {
             description = (
@@ -82,7 +81,7 @@ class ProductItem extends Component {
                 </div>
             )
         } else {
-            description = (<p onClick={this.handleEditDescription}>{this.props.product.description}</p>)
+            description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description}</p></div>)
         }
 
 
