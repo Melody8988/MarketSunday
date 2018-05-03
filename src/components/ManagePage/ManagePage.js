@@ -42,7 +42,9 @@ class ManagePage extends Component {
       return (
         <ProductItems
         key={product.id}
-        product={product}/>
+        product={product}
+        getImages={this.getImages}
+        />
     )
     })
 

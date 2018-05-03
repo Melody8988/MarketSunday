@@ -25,8 +25,8 @@ function* updateTitleSaga(action){
         const newTitle = yield call(axios.put, '/api/shop/' + action.payload.id, {title: action.payload.title});
         console.log('posted new title', newTitle);
         yield put({
-            type: 'UPDATED_TITLES', 
-            payload: newTitle
+            type: 'GET_IMAGES', 
+            // payload: newTitle
         })
     } catch (error) {
         console.log('CANNOT updateTitleSaga', error)
