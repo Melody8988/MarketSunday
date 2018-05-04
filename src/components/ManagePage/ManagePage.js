@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 // import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 import Nav from '../../components/Nav/Nav';
 import ProductItems from './ProductItems'
-import ReactFilestack, { client, options, AoFC5ga9oR5w2BF450Phlz} from 'filestack-react';
+import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
+
 
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -43,14 +44,41 @@ class ManagePage extends Component {
     // this.props.history.push('home');
   }
 
-  addImage = () => {
+  // addImage = (event) => {
+  //   this.props.dispatch({
+  //     type: 'ADD_IMAGE',
+  //     payload: this.state.newImage
+  //   })
+  // }
+
+  //on filestack success
+  handleUpload = (result) => {
+    console.log('pic success', result)
+    this.setState({
+      newImage: {
+            title: this.state.newImage.description,
+            description: this.state.newImage.description,
+            image_url: result.filesUploaded[0].url
+        }
+    })
+    console.log('newimage:', this.state.newImage)
     this.props.dispatch({
       type: 'ADD_IMAGE',
       payload: this.state.newImage
     })
-  }
+}
 
   render() {
+    //copied from filestack api documentation
+    const client = filestack.init('AoFC5ga9oR5w2BF450Phlz', [options]);
+    const apiKey = 'AoFC5ga9oR5w2BF450Phlz';
+    const options = {
+      accept: 'image/*',
+      maxFiles: 1,
+      storeTo: {
+        location: 's3'
+      }//end storeTo
+    }//end options
 
     //Map through all products 
     let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
@@ -83,15 +111,9 @@ class ManagePage extends Component {
       );
     }
 
-    let addItemButton = (<ReactFilestack
-      apikey={AoFC5ga9oR5w2BF450Phlz}
-      buttonText="Click me"
-      buttonClass="classname"
-      options={options}
-      onSuccess={this.yourCallbackFunction}
-    />)
 
     return (
+      
       <div>
         <div>
           {content}
@@ -101,7 +123,13 @@ class ManagePage extends Component {
         <h1>Shop name</h1>
         <h2>Shop info</h2>
         <h3>Shop contact</h3>
-        {addItemButton}
+        {/* <button onClick={this.addImage}>ADD</button> */}
+        <ReactFilestack
+          apikey={apiKey}
+          buttonText="Add new Product"
+          options={options}
+          onSuccess={this.handleUpload}
+        />
         {frontPageProducts}
       </div>
     );
