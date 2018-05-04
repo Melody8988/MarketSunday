@@ -5,6 +5,8 @@ import Nav from '../../components/Nav/Nav';
 import ProductItems from './ProductItems'
 import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
+import css from '../ManagePage/ManagePage.css'
+
 
 
 //passport.js authentication
@@ -70,11 +72,13 @@ class ManagePage extends Component {
     //Map through all products 
     let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
       return (
+      
         <ProductItems
           key={product.id}
           product={product}
           getImages={this.getImages}
         />
+      
       )
     })
 
@@ -85,15 +89,12 @@ class ManagePage extends Component {
         <div>
           <h3
             id="welcome"
-          >
-            Welcome, {this.props.user.userName}! <br />
-            Manage Products Here
+          className='welcome'>
+            Welcome, {this.props.user.userName}!<br />
           </h3>
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
+          <h5
+          className='manage'>
+            Manage your products here</h5>
         </div>
       );
     }
@@ -105,6 +106,7 @@ class ManagePage extends Component {
         <div>
           {content}
           <Nav />
+          <button className='logOut' onClick={this.logout}>Log Out</button>
         </div>
         <h1>Shop name</h1>
         <h2>Shop info</h2>
