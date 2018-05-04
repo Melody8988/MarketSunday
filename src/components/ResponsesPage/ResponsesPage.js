@@ -23,11 +23,10 @@ class ResponsesPage extends Component {
 
     let viewerMessages = this.props.reduxState.responsesReducer.map((message) => {
       return ( <div key={message.id}>
-        <p>{message.galleryitems_id}</p>
+        <p>{message.title}</p>
         <p>{message.name}</p>
         <p>{message.message}</p>
         <p>{message.email}</p>
-        <p>{message.galleryitems_id.title}</p>
       
       </div>
       )
