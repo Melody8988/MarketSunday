@@ -61,17 +61,6 @@ function* deleteImageSaga(action){
     }
 }
 
-
-// let imageToDelete = this.state
-//         console.log('in delete', imageToDelete)
-//         console.log('id', imageToDelete.id)
-//         axios.delete('/api/shop/' + imageToDelete.id)
-//             .then((response) => {
-//                 // this.getReflections();
-//             }).catch((error) => {
-//                 console.log('error deleting image', error)
-//             })//end catch
-
 function* imageSaga(){
     yield takeEvery('GET_IMAGES', getimagesSaga);
     yield takeEvery('UPDATE_TITLE', updateTitleSaga);

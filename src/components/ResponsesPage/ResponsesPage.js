@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
 
 class ResponsesPage extends Component {
   componentDidMount() {
+    //grab owners specific login information
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    //grab comments made to specific owner 
+    this.props.dispatch({ type: 'GET_RESPONSES' })
   }
 
   componentDidUpdate() {
@@ -22,11 +21,23 @@ class ResponsesPage extends Component {
   render() {
     let content = null;
 
+    let viewerMessages = this.props.reduxState.responsesReducer.map((message) => {
+      return ( <div key={message.id}>
+        <p>{message.galleryitems_id}</p>
+        <p>{message.name}</p>
+        <p>{message.message}</p>
+        <p>{message.email}</p>
+        <p>{message.galleryitems_id.title}</p>
+      
+      </div>
+      )
+    })
+
     if (this.props.user.userName) {
       content = (
         <div>
           <p>
-            Info Page
+            Viewer Comments:
           </p>
         </div>
       );
@@ -36,10 +47,11 @@ class ResponsesPage extends Component {
       <div>
         <Nav />
         { content }
+        { viewerMessages }
       </div>
     );
   }
 }
 
-// this allows us to use <App /> in index.js
+const mapStateToProps = reduxState => ({ reduxState, user: reduxState.user, });
 export default connect(mapStateToProps)(ResponsesPage);

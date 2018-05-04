@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
-// import { isNull } from 'util';
-import axios from 'axios';
 
 class ProductItem extends Component {
     constructor(props) {

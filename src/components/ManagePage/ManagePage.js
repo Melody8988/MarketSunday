@@ -26,10 +26,6 @@ class ManagePage extends Component {
     //grab specific user's information
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     //get specfic user's existing products
-    this.getImages();
-  }
-
-  getImages = () => {
     this.props.dispatch({ type: 'GET_IMAGES' })
   }
 
