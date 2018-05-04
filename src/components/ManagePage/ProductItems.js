@@ -58,15 +58,10 @@ class ProductItem extends Component {
     }
 
     handleDelete = (event) => {
-        let imageToDelete = this.state
-        console.log('in delete', imageToDelete)
-        console.log('id', imageToDelete.id)
-        axios.delete('/api/shop/' + imageToDelete.id)
-            .then((response) => {
-                // this.getReflections();
-            }).catch((error) => {
-                console.log('error deleting image', error)
-            })//end catch
+        this.props.dispatch({
+            type: 'DELETE_IMAGE', 
+            payload: this.state
+        })
     }//end handleDeleteReflec 
 
     

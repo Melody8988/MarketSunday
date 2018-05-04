@@ -47,26 +47,37 @@ function* addImageSaga(action){
     }
 }
 
-// function* deleteImageSaga(action){
-//     console.log('in delete ImageSaga')
-//     try{
-//         console.log('ACTION:', action.payload)
-//         const afterImageDelete = yield call (axios.delete, '/api/shop/', action.payload.id);
-//         console.log('TEST', afterImageDelete)
-//         yield put ({
-//             type: 'GET_IMAGES',
-//         })
-//     }catch (error) {
-//         console.log ('CANNOT delete product', error)
-//     }
-// }
+function* deleteImageSaga(action){
+    console.log('in delete ImageSaga')
+    try{
+        console.log('ACTION:', action.payload)
+        const afterImageDelete = yield call (axios.delete, '/api/shop/' + action.payload.id);
+        console.log('TEST', afterImageDelete)
+        yield put ({
+            type: 'GET_IMAGES',
+        })
+    }catch (error) {
+        console.log ('CANNOT delete product', error)
+    }
+}
+
+
+// let imageToDelete = this.state
+//         console.log('in delete', imageToDelete)
+//         console.log('id', imageToDelete.id)
+//         axios.delete('/api/shop/' + imageToDelete.id)
+//             .then((response) => {
+//                 // this.getReflections();
+//             }).catch((error) => {
+//                 console.log('error deleting image', error)
+//             })//end catch
 
 function* imageSaga(){
     yield takeEvery('GET_IMAGES', getimagesSaga);
     yield takeEvery('UPDATE_TITLE', updateTitleSaga);
     // yield takeEvery('UPDATE_DESCRIPTION', updateDescriptionSaga)
     yield takeEvery ('ADD_IMAGE', addImageSaga)
-    // yield takeEvery ('DELETE_IMAGE', deleteImageSaga)
+    yield takeEvery ('DELETE_IMAGE', deleteImageSaga)
 }
 
 export default imageSaga;
