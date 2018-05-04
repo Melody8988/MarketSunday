@@ -46,7 +46,6 @@ class ManagePage extends Component {
 
   //on filestack success
   handleUpload = (result) => {
-    console.log('pic success', result)
     this.setState({
       newImage: {
             title: this.state.newImage.description,
@@ -54,7 +53,6 @@ class ManagePage extends Component {
             image_url: result.filesUploaded[0].url
         }
     })
-    console.log('newimage:', this.state.newImage)
     this.props.dispatch({
       type: 'ADD_IMAGE',
       payload: this.state.newImage
@@ -111,7 +109,6 @@ class ManagePage extends Component {
         <div>
           {content}
           <Nav />
-
         </div>
         <h1>Shop name</h1>
         <h2>Shop info</h2>

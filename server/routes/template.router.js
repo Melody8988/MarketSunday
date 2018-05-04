@@ -4,7 +4,6 @@ const router = express.Router();
 
 //GET existing products from postgreSQL
 router.get('/', (req, res) => {
-    // const currentDescriptions = req.query.id;
     const queryText = `SELECT * from "galleryitems"`
     pool.query(queryText).then((result) => {
         res.send(result.rows)
@@ -16,7 +15,7 @@ router.get('/', (req, res) => {
 })//end get
 
 //UPDATE existing product TITLE and DESCRIPTION from postgreSQL
-router.put('/:id', (req, res)=>{
+router.put('/:id', (req, res) => {
     console.log('update title', req.body, req.params);
     const productTitle = req.body.title;
     const productDescription = req.body.description
@@ -34,18 +33,18 @@ router.put('/:id', (req, res)=>{
 //POST new IMAGE via filestack to postgreSQL
 router.post('/', (req, res) => {
     const productImage = req.body;
-    const queryText = `INSERT INTO "galleryitems" ("title", "image_url", "description") VALUES ($1, $2, $3);` 
-    pool.query(queryText, [productImage.title, productImage.image_url, productImage.description]).then((response)=>{
+    const queryText = `INSERT INTO "galleryitems" ("title", "image_url", "description") VALUES ($1, $2, $3);`
+    pool.query(queryText, [productImage.title, productImage.image_url, productImage.description]).then((response) => {
         console.log('Successfully added new image to db!');
         res.sendStatus(200);
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log('Error posting new image:', error);
         res.sendStatus(500);
     })
 });
 
 //DELETE image from postgreSQL
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', (req, res) => {
     const productId = req.params.id;
     const queryText = `DELETE FROM "galleryitems" WHERE "id" = $1;`
     pool.query(queryText, [productId]).then((response) => {
@@ -55,20 +54,5 @@ router.delete('/:id', (req, res)=>{
         res.sendStatus(500);
     });//end catch
 });//end delete
-
-
-// //DELETE an existing reflection from postgreSQL
-// router.delete('/:id', (req, res) => {
-//     console.log('req.params test', req.params);
-//     let productId = req.params.id;
-//     console.log('successful router.delete', reflecId);
-//     const queryText = `DELETE FROM "galleryitems" WHERE "id" = $1;`
-//     pool.query(queryText, [productId]).then((response) => {
-//         console.log(response);
-//         res.sendStatus(200);
-//     }).catch((err) => {
-//         res.sendStatus(500);
-//     });//end catch
-// });//end delete
 
 module.exports = router;

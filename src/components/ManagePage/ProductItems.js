@@ -4,7 +4,6 @@ import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 // import { isNull } from 'util';
 import axios from 'axios';
 
-
 class ProductItem extends Component {
     constructor(props) {
         super(props)
@@ -18,58 +17,45 @@ class ProductItem extends Component {
             }
     }
 
-    //on click of save button after title has been updated
+    //After title has been updated, set new title
     handleEditTitle = (event) => {
-        console.log('you clicked edit title!');
         this.setState({
             editingTitle: !this.state.editingTitle
         });
-        console.log(this.state.editingTitle)
         this.props.dispatch({
             type: 'UPDATE_TITLE',
             payload: this.state
         })
-        console.log(this.state.title)
-        console.log('this.state', this.state)
-    }
+    }//end handleEditTitle
 
-    //on click of save button after description has been updated
+    //After description has been updated, set new description
     handleEditDescription = (event) => {
-        console.log('you clicked edit description!');
         this.setState({
             editingDescription: !this.state.editingDescription
         });
-        console.log(this.state.editingDescription)
         this.props.dispatch({
             type: 'UPDATE_TITLE',
             payload: this.state
         })
-        console.log(this.state.description)
-        console.log('this.state', this.state)
+    }//end handleEditDescription
 
-    }
-
-
+    //Set user's input value as the new product property
     handleChange = propertyName => (event) => {
-        console.log('in handleChange')
         this.setState({
             [propertyName]: event.target.value
         });
-    }
+    }//end handleChange
 
+    //Delete send product item request
     handleDelete = (event) => {
         this.props.dispatch({
-            type: 'DELETE_IMAGE', 
+            type: 'DELETE_IMAGE',
             payload: this.state
         })
     }//end handleDeleteReflec 
 
-    
-
     render() {
-
         //Toggle what TITLE looks like whether it is being edited or not 
-        console.log(this.state)
         let title;
         if (this.state.editingTitle === true) {
             title = (
@@ -78,7 +64,7 @@ class ProductItem extends Component {
                     <button onClick={this.handleEditTitle}>Save</button>
                 </div>
             )
-        } else if ((this.state.editingTitle === false) & this.props.product.title === null || this.props.product.title === ''){
+        } else if ((this.state.editingTitle === false) & this.props.product.title === null || this.props.product.title === '') {
             title = (<div onClick={this.handleEditTitle}><p>Title:</p></div>)
         } else {
             title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}</p></div>)
@@ -93,13 +79,13 @@ class ProductItem extends Component {
                     <button onClick={this.handleEditDescription}>Save</button>
                 </div>
             )
-        } else if ((this.state.editingDescription === false) & this.props.product.description === null || this.props.product.description === ''){
+        } else if ((this.state.editingDescription === false) & this.props.product.description === null || this.props.product.description === '') {
             description = (<div onClick={this.handleEditDescription}><p>Description: </p></div>)
         } else {
             description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description}</p></div>)
         }//end description if statements
 
-        //display products as cards
+        //Display products as cards
         return (
             <div key={this.props.product.id}>
                 {/* outer card includes title, image, description */}
@@ -126,8 +112,8 @@ class ProductItem extends Component {
                 </Card>
             </div>
         )
-    }
-}
+    }//end render
+}//end Component
 
 const mapStateToProps = reduxState => ({ reduxState, });
 export default connect(mapStateToProps)(ProductItem);
