@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
+import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card';
+import MessageInputForm from './MessageInputForm'
 
 class ProductItem extends Component {
     constructor(props) {

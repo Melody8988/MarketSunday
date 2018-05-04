@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
+import MessageInputForm from '../ManagePage/MessageInputForm'
 
 class FrontPage extends Component {
     constructor(props) {
@@ -35,11 +36,7 @@ class FrontPage extends Component {
                         </CardText>
                         {/* inner card includes input form  */}
                         <Card>
-                            <p>Message the vendor about this product:</p>
-                            <input placeholder="Name"></input><br/>
-                            <input placeholder="Email"></input><br/>
-                            <input placeholder="Message"></input><br/>
-                            <button>Send!</button>
+                            <MessageInputForm/>
                         </Card>
                     </Card>
                 </div>
