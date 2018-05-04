@@ -44,13 +44,6 @@ class ManagePage extends Component {
     // this.props.history.push('home');
   }
 
-  // addImage = (event) => {
-  //   this.props.dispatch({
-  //     type: 'ADD_IMAGE',
-  //     payload: this.state.newImage
-  //   })
-  // }
-
   //on filestack success
   handleUpload = (result) => {
     console.log('pic success', result)
@@ -69,7 +62,7 @@ class ManagePage extends Component {
 }
 
   render() {
-    //copied from filestack api documentation
+    //COPIED FROM FILESTACK API DOCUMENTATION TO UPLOAD IMAGE
     const client = filestack.init('AoFC5ga9oR5w2BF450Phlz', [options]);
     const apiKey = 'AoFC5ga9oR5w2BF450Phlz';
     const options = {

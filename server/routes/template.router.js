@@ -42,8 +42,33 @@ router.post('/', (req, res) => {
         console.log('Error posting new image:', error);
         res.sendStatus(500);
     })
-
-
 });
+
+//DELETE image from postgreSQL
+router.delete('/:id', (req, res)=>{
+    const productId = req.params.id;
+    const queryText = `DELETE FROM "galleryitems" WHERE "id" = $1;`
+    pool.query(queryText, [productId]).then((response) => {
+        console.log(response);
+        res.sendStatus(200);
+    }).catch((err) => {
+        res.sendStatus(500);
+    });//end catch
+});//end delete
+
+
+// //DELETE an existing reflection from postgreSQL
+// router.delete('/:id', (req, res) => {
+//     console.log('req.params test', req.params);
+//     let productId = req.params.id;
+//     console.log('successful router.delete', reflecId);
+//     const queryText = `DELETE FROM "galleryitems" WHERE "id" = $1;`
+//     pool.query(queryText, [productId]).then((response) => {
+//         console.log(response);
+//         res.sendStatus(200);
+//     }).catch((err) => {
+//         res.sendStatus(500);
+//     });//end catch
+// });//end delete
 
 module.exports = router;

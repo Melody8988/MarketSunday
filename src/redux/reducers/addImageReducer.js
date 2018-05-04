@@ -1,4 +1,4 @@
-const addImageReducer = (state = [], action) => {
+const addItemReducer = (state = [], action) => {
     switch (action.type) {
         case 'POST_IMAGE':
             console.log('POST_IMAGE', action.payload)
@@ -8,4 +8,4 @@ const addImageReducer = (state = [], action) => {
     }
 }
 
-export default addImageReducer;
+export default addItemReducer;

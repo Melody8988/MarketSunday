@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 // import { isNull } from 'util';
+import axios from 'axios';
 
 
 class ProductItem extends Component {
@@ -56,6 +57,19 @@ class ProductItem extends Component {
         });
     }
 
+    handleDelete = (event) => {
+        let imageToDelete = this.state
+        console.log('in delete', imageToDelete)
+        console.log('id', imageToDelete.id)
+        axios.delete('/api/shop/' + imageToDelete.id)
+            .then((response) => {
+                // this.getReflections();
+            }).catch((error) => {
+                console.log('error deleting image', error)
+            })//end catch
+    }//end handleDeleteReflec 
+
+    
 
     render() {
 
@@ -73,7 +87,7 @@ class ProductItem extends Component {
             title = (<div onClick={this.handleEditTitle}><p>Title:</p></div>)
         } else {
             title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}</p></div>)
-        }
+        }//end title if statements
 
         //Toggle what DESCRIPTION looks like whether it is being edited or not 
         let description;
@@ -88,7 +102,7 @@ class ProductItem extends Component {
             description = (<div onClick={this.handleEditDescription}><p>Description: </p></div>)
         } else {
             description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description}</p></div>)
-        }
+        }//end description if statements
 
         //display products as cards
         return (
@@ -104,6 +118,7 @@ class ProductItem extends Component {
                     </CardMedia>
                     <CardText>
                         {description}
+                        <button onClick={this.handleDelete}>Delete</button>
                     </CardText>
                     {/* inner card includes input form  */}
                     <Card>
