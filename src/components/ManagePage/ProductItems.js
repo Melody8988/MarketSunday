@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
+// import { isNull } from 'util';
 
 
 class ProductItem extends Component {
@@ -16,7 +17,7 @@ class ProductItem extends Component {
             }
     }
 
-
+    //on click of save button after title has been updated
     handleEditTitle = (event) => {
         console.log('you clicked edit title!');
         this.setState({
@@ -31,6 +32,7 @@ class ProductItem extends Component {
         console.log('this.state', this.state)
     }
 
+    //on click of save button after description has been updated
     handleEditDescription = (event) => {
         console.log('you clicked edit description!');
         this.setState({
@@ -57,7 +59,7 @@ class ProductItem extends Component {
 
     render() {
 
-        //Toggle what title looks like whether it is being edited or not for TITLE 
+        //Toggle what TITLE looks like whether it is being edited or not 
         console.log(this.state)
         let title;
         if (this.state.editingTitle === true) {
@@ -67,23 +69,26 @@ class ProductItem extends Component {
                     <button onClick={this.handleEditTitle}>Save</button>
                 </div>
             )
+        } else if ((this.state.editingTitle === false) & this.props.product.title === null || this.props.product.title === ''){
+            title = (<div onClick={this.handleEditTitle}><p>Title:</p></div>)
         } else {
             title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}</p></div>)
         }
 
-        //Toggle what title looks like whether it is being edited or not for DESCRIPTION
+        //Toggle what DESCRIPTION looks like whether it is being edited or not 
         let description;
         if (this.state.editingDescription === true) {
             description = (
                 <div>
-                    <textarea defaultValue={this.props.product.description} onChange={this.handleChange('description')} ></ textarea>
+                    <textarea defaultValue={this.props.product.description} onChange={this.handleChange('description')}></ textarea>
                     <button onClick={this.handleEditDescription}>Save</button>
                 </div>
             )
+        } else if ((this.state.editingDescription === false) & this.props.product.description === null || this.props.product.description === ''){
+            description = (<div onClick={this.handleEditDescription}><p>Description: </p></div>)
         } else {
             description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description}</p></div>)
         }
-
 
         //display products as cards
         return (

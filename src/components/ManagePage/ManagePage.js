@@ -16,9 +16,9 @@ class ManagePage extends Component {
     super(props)
     this.state = {
       newImage: {
-        title: '',
+        title: '', 
         image_url: '',
-        description: ''
+        description: '',  
       }
     }
   }
