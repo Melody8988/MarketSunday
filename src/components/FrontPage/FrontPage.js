@@ -36,7 +36,10 @@ class FrontPage extends Component {
                         </CardText>
                         {/* inner card includes input form  */}
                         <Card>
-                            <MessageInputForm/>
+                            <MessageInputForm
+                            key={product.id}
+                            product={product}
+                            getImages={this.getImages}/>
                         </Card>
                     </Card>
                 </div>

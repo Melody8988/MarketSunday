@@ -18,6 +18,8 @@ class ResponsesPage extends Component {
     }
   }
 
+ 
+
   render() {
     let content = null;
 
@@ -27,6 +29,8 @@ class ResponsesPage extends Component {
         <p>{message.name}</p>
         <p>{message.message}</p>
         <p>{message.email}</p>
+        <p>{message.date}</p>
+        <button onClick={this.deleteMessage}>Delete Message</button>
       
       </div>
       )

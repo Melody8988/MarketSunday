@@ -10,13 +10,28 @@ class MessageInputForm extends Component{
                 name: '',
                 email: '',
                 message: '',
-                resolved: ''
+                resolved: '', 
+                galleryitems_id: this.props.product.id
             }
         }
     }
 
-    handleChangeFor = () => {
-        console.log('in handleChange!')
+    handleChangeFor = (propertyName) => {
+        return (event) => {
+            this.setState({
+                newMessage: {
+                    ...this.state.newMessage, 
+                    [propertyName] : event.target.value
+                }
+            })
+        }
+    }
+
+    handleSendNewMessage = () => {
+        this.props.dispatch({
+            type: 'ADD_MESSAGE', 
+            payload: this.state.newMessage
+        })
     }
 
     
@@ -27,7 +42,7 @@ class MessageInputForm extends Component{
                             <input onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
                             <input onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
                             <input onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
-                            <button>Send!</button>
+                            <button onClick={this.handleSendNewMessage}>Send!</button>
                             </div>
         )
     }

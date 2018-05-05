@@ -108,9 +108,10 @@ class ManagePage extends Component {
           <Nav />
           <button className='logOut' onClick={this.logout}>Log Out</button>
         </div>
-        <h1>Shop name</h1>
-        <h2>Shop info</h2>
-        <h3>Shop contact</h3>
+        <h1>MODscintilla</h1>
+        <h2>Giovanna Massard</h2>
+        <h3>Phone: 123-234-1234</h3>
+        <h3>Email: gmass@gmail.com</h3>
         {/* <button onClick={this.addImage}>ADD</button> */}
         <ReactFilestack
           apikey={apiKey}
