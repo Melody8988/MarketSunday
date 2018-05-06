@@ -72,13 +72,10 @@ class ManagePage extends Component {
     //Map through all products 
     let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
       return (
-      
         <ProductItems
           key={product.id}
           product={product}
-          getImages={this.getImages}
         />
-      
       )
     })
 

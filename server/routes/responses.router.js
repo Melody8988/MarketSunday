@@ -4,13 +4,14 @@ const responsesRouter = express.Router();
 
 //GET all existing products from postgreSQL
 responsesRouter.get('/', (req, res) => {
-    const queryText = `SELECT "viewermessages"."id", 
+    const queryText = `SELECT 
+    "viewermessages"."id", 
     "viewermessages"."date", 
     "viewermessages"."name", 
     "viewermessages"."email", 
     "viewermessages"."message", 
     "viewermessages"."resolved", 
-    "galleryitems"."id", 
+    "viewermessages"."galleryitems_id", 
     "galleryitems"."title" 
     FROM "viewermessages" 
     JOIN "galleryitems" 
@@ -36,5 +37,31 @@ responsesRouter.post('/', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+//DELETE message from postgreSQL
+responsesRouter.delete('/:id', (req, res) => {
+    const messageId = req.params.id;
+    const queryText = `DELETE FROM "viewermessages" WHERE "id" = $1;`
+    pool.query(queryText, [messageId]).then((response) => {
+        console.log(response);
+        res.sendStatus(200);
+    }).catch((err) => {
+        res.sendStatus(500);
+    });//end catch
+});//end delete
+
+// responsesRouter.put('/:id', (req, res) => {
+//     console.log('update viewer message resolve status', req.body, req.params);
+//     const resolveStatus = req.body;
+//     const messageId = req.params.id;
+//     const queryText = `UPDATE "galleryitems" SET "title" = $1, "description" = $2 WHERE "id" = $3;`;
+//     pool.query(queryText, [productTitle, productDescription, productId])
+//         .then((response) => {
+//             res.sendStatus(200);
+//         }).catch((error) => {
+//             console.log('error updating title', error);
+//             res.sendStatus(500);
+//         });//end catch
+// });//end put
 
 module.exports = responsesRouter;

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
+import ResponsesItems from './ResponsesItems'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 
 class ResponsesPage extends Component {
   componentDidMount() {
     //grab owners specific login information
-    this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     //grab comments made to specific owner 
     this.props.dispatch({ type: 'GET_RESPONSES' })
   }
@@ -18,21 +19,15 @@ class ResponsesPage extends Component {
     }
   }
 
- 
-
   render() {
     let content = null;
 
     let viewerMessages = this.props.reduxState.responsesReducer.map((message) => {
-      return ( <div key={message.id}>
-        <p>{message.title}</p>
-        <p>{message.name}</p>
-        <p>{message.message}</p>
-        <p>{message.email}</p>
-        <p>{message.date}</p>
-        <button onClick={this.deleteMessage}>Delete Message</button>
-      
-      </div>
+      return (
+        <ResponsesItems
+          key={message.id}
+          message={message}
+        />
       )
     })
 
@@ -49,8 +44,8 @@ class ResponsesPage extends Component {
     return (
       <div>
         <Nav />
-        { content }
-        { viewerMessages }
+        {content}
+        {viewerMessages}
       </div>
     );
   }
