@@ -65,8 +65,8 @@ function* deleteImageSaga(action){
 
 function* imageSaga(){
     yield takeEvery('GET_IMAGES', getimagesSaga);
+    //UPDATE_TITLE cover both title and description updates
     yield takeEvery('UPDATE_TITLE', updateTitleSaga);
-    // yield takeEvery('UPDATE_DESCRIPTION', updateDescriptionSaga)
     yield takeEvery ('ADD_IMAGE', addImageSaga)
     yield takeEvery ('DELETE_IMAGE', deleteImageSaga)
 }
