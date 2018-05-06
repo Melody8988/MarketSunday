@@ -32,16 +32,6 @@ class MessageInputForm extends Component{
             type: 'ADD_MESSAGE', 
             payload: this.state.newMessage
         })
-        // this.setState({
-        //     newMessage: {
-        //         date: '',
-        //         name: '',
-        //         email: '',
-        //         message: '',
-        //         resolved: '', 
-        //         galleryitems_id: this.props.product.id
-        //     }
-        // })
     }
 
     

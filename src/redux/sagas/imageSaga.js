@@ -1,5 +1,6 @@
 import {call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 //SAGA TO GET IMAGES FROM DB
 function* getimagesSaga(action) {
@@ -58,6 +59,7 @@ function* deleteImageSaga(action){
         })
     }catch (error) {
         console.log ('CANNOT delete product', error)
+        swal('A viewer has made a comment regarding this specific product. Please delete the comment before getting rid of this product.')
     }
 }
 
