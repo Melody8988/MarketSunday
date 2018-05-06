@@ -50,18 +50,18 @@ responsesRouter.delete('/:id', (req, res) => {
     });//end catch
 });//end delete
 
-// responsesRouter.put('/:id', (req, res) => {
-//     console.log('update viewer message resolve status', req.body, req.params);
-//     const resolveStatus = req.body;
-//     const messageId = req.params.id;
-//     const queryText = `UPDATE "galleryitems" SET "title" = $1, "description" = $2 WHERE "id" = $3;`;
-//     pool.query(queryText, [productTitle, productDescription, productId])
-//         .then((response) => {
-//             res.sendStatus(200);
-//         }).catch((error) => {
-//             console.log('error updating title', error);
-//             res.sendStatus(500);
-//         });//end catch
-// });//end put
+responsesRouter.put('/:id', (req, res) => {
+    console.log('update viewer message resolve status', req.body, req.params);
+    const resolveStatus = req.body.resolved;
+    const messageId = req.params.id;
+    const queryText = `UPDATE viewermessages SET "resolved" = $1 WHERE "id" = $2;`;
+    pool.query(queryText, [resolveStatus, messageId])
+        .then((response) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('error updating status', error);
+            res.sendStatus(500);
+        });//end catch
+});//end put
 
 module.exports = responsesRouter;

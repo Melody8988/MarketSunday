@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
 
 class ResponsesItems extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            id: this.props.message.id,
-            resolved: this.props.message.resolved,
-            galleryitems_id: this.props.message.galleryitems_id
-        }
+        this.state =
+            {
+                id: this.props.message.id,
+                resolved: this.props.message.resolved
+            }
     }
 
     deleteMessage = () => {
@@ -20,39 +21,49 @@ class ResponsesItems extends Component {
     }
 
     // updateResolveStatus = (event) => {
+    //     console.log('before:', this.state.resolved)
+    //     console.log('before:', this.state.id)
+    //     console.log (!this.state.resolved)
     //     this.setState({
-    //         resolved: !this.props.message.resolved
+    //         resolved: !this.state.resolved
     //     })
-    //     this.props.dispatch({
-    //         type: 'UPDATE_RESOLVED',
-    //         payload: this.state
-    //     })
+    //     console.log('after:', this.state.resolved)
+    //     console.log('after:', this.state.id)
+    //     // this.props.dispatch({
+    //     //     type: 'UPDATE_RESOLVED',
+    //     //     payload: this.state
+    //     // })
     // }
+    updateResolveStatus = (event) => {
+        this.props.dispatch({
+            type: 'UPDATE_STATUS',
+            payload: this.state
+        })
+    }//end updateResolveStatus
 
 
     render() {
 
-    // let status;
-    // if (this.state.resolved === true) {
-    //     status = (
-    //         <p>Resolved?: <button onClick={this.updateResolveStatus}>Yes</button></p>
-    //     )
-    // } else if  (this.state.resolved === false){
-    //     status = (
-    //         <p>Resolved?: <button onClick={this.updateResolveStatus}>No</button></p>
-    //     )
-    // }
+    let status;
+    if (this.state.resolved === true) {
+        status = (
+            <p>Resolved!</p>
+        )
+    } else if  (this.state.resolved === false){
+        status = (
+            <p>Not resolved</p>
+        )
+    }
 
         return (
             <div>
                 <p>{this.props.message.title}</p>
-                <p>normal{this.props.message.id}</p>
-                <p>product id{this.props.message.galleryitems_id}</p>
                 <p>{this.props.message.name}</p>
                 <p>{this.props.message.message}</p>
                 <p>{this.props.message.email}</p>
-                <p>{this.props.message.date}</p>
-                {/* {status} */}
+                <p><Moment format="MM/DD/YYYY">{this.props.message.date}</Moment></p>
+                {status}
+                <button onClick={this.updateResolveStatus}>Update</button>
                 <button onClick={this.deleteMessage}>Delete Message</button>
             </div>
         )

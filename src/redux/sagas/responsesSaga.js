@@ -49,25 +49,26 @@ function* deleteMessageSaga(action){
     }//end catch
 }//end deleteMessageSaga
 
-// function* updateResolveStatus(action){
-//     console.log(' in updateResolveStatus')
-//     try{
-//         console.log('ACTION:', action.payload)
-//         const updatedStatus = yield call (axios.put, '/api/responses/' + action.payload.id, action.payload)
-//         console.log('posted new status', updatedStatus);
-//         yield put({
-//             type: 'GET_RESPONSES' 
-//         })
-//     } catch (error) {
-//         console.log('CANNOT updateResolveStatus', error)
-//     }
-// }
+function* updateResolveStatus(action){
+    console.log(' in updateResolveStatus')
+    action.payload.resolved = !action.payload.resolved
+    try{
+        console.log('ACTION:', action.payload.resolved)
+        const updatedStatus = yield call (axios.put, '/api/responses/' + action.payload.id, action.payload)
+        console.log('posted new status', updatedStatus);
+        yield put({
+            type: 'GET_RESPONSES' 
+        })
+    } catch (error) {
+        console.log('CANNOT updateResolveStatus', error)
+    }
+}
 
 function* responsesSaga(){
     yield takeEvery('GET_RESPONSES', getResponsesSaga);
     yield takeEvery('ADD_MESSAGE', addMessageSaga);
     yield takeEvery('DELETE_MESSAGE', deleteMessageSaga);
-    // yield takeEvery('UPDATE_TITLE', updateResolveStatus)
+    yield takeEvery('UPDATE_STATUS', updateResolveStatus)
 }
 
 export default responsesSaga;
