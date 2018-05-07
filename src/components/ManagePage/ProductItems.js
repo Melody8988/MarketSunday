@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card';
 import MessageInputForm from './MessageInputForm'
+// import ProductStyle from './ProductItemsStyles'
+import css from '../ManagePage/ManagePage.css'
+
+
 
 class ProductItem extends Component {
     constructor(props) {
@@ -86,7 +90,7 @@ class ProductItem extends Component {
 
         //Display products as cards
         return (
-            <div key={this.props.product.id}>
+            <div className = 'cards' key={this.props.product.id}>
                 {/* outer card includes title, image, description */}
                 <Card style={{ width: '30%' }} >
                     <CardHeader>

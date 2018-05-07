@@ -20,3 +20,8 @@
     margin-top: 10px;
     margin-right: 10px;
 }
+
+.cards{
+  display: flex;   
+    flex-wrap: wrap;
+}

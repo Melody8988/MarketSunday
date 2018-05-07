@@ -4,6 +4,28 @@ import { connect } from 'react-redux';
 import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 import MessageInputForm from '../ManagePage/MessageInputForm'
 
+// GRIDS
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+// import Grid from 'material-ui/Grid';
+// // import { FormLabel, FormControlLabel } from 'material-ui/Form';
+// import Radio, { RadioGroup } from 'material-ui/Radio';
+// import Paper from 'material-ui/Paper';
+
+const styles = theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing.unit * 2,
+    },
+  });
+
+
 class FrontPage extends Component {
     constructor(props) {
         super(props);

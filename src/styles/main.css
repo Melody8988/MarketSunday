@@ -16,11 +16,21 @@ body {
 form {
     background-color: #dbd5d5;
     width: 30%;
-    height: 250px;
-    margin: 20px auto;
+    height: 30%px;
+    opacity: 0.5;
+    margin: 90px auto;
     padding: 25px;
-    border-radius: 2px;
+    border-radius: 10px;
+    align-content: center;
+  
 }
+
+/* .imageDiv{ */
+    /* background-image: url(bench-garden-grass-334978.jpg); */
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+} */
 
 input {
     margin: 5px;

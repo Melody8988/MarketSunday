@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
+import css from '../LoginPage/LoginPage.css'
+// import image from '../LoginPage/bench-garden-grass-334978.jpg'
 
 
 const mapStateToProps = state => ({
@@ -61,8 +63,9 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <body className='imageDiv'>
         { this.renderAlert() }
+        <div className='imageDiv'>
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
@@ -96,7 +99,8 @@ class LoginPage extends Component {
             <Link to="/register">Register</Link>
           </div>
         </form>
-      </div>
+        </div>
+      </body>
     );
   }
 }

@@ -13,10 +13,12 @@ import ManagePage from './components/ManagePage/ManagePage';
 import ResponsesPage from './components/ResponsesPage/ResponsesPage';
 import FrontPage from './components/FrontPage/FrontPage'
 
+
 import './styles/main.css';
 
 const App = () => (
   <div>
+    
     {/* <Header title="Title" /> */}
     <Router>
       <Switch>
@@ -29,6 +31,7 @@ const App = () => (
           path="/home"
           component={LoginPage}
         />
+        
         <Route
           path="/register"
           component={RegisterPage}
