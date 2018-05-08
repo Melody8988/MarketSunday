@@ -14,24 +14,27 @@ import Grid from 'material-ui/Grid';
 // import FrontPageStyling from './FrontPageStyling'
 
 const styles = {
-    root:{
+    root: {
         flexWrap: 'wrap',
         display: 'flex',
         margin: 'auto',
-        width: 'auto'
-       
+        width: 'auto',
+        justify: 'center',
+        maxWidth: '1140px'
     },
     card: {
-        padding: '10px',
-        margin: '30px',
+        padding: '15px',
+        margin: '20px',
         width: '300px',
         flexWrap: 'wrap',
-       
+    },
+    title: {
+        align: 'center',
     },
     media: {
         width: '500px',
     },
-  };
+};
 
 class FrontPage extends Component {
     constructor(props) {
@@ -50,48 +53,46 @@ class FrontPage extends Component {
         //map through products recieved from imageSaga 
         //frontReducer comes from combineReducers function in index.js
         let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
-           
+
             return (
-                <div className = 'cards' key={product.id}>
+                <div className='cardTable'>
+                <div className='cards' key={product.id}>
                     {/* outer card includes title, image, description */}
-                    <Grid style={styles.root} container spacing={24}>
-                    <Card style={styles.card}>
-                        {/* <CardHeader> */}
-                            <p>{product.title}</p>
-                        {/* </CardHeader> */}
-                        <CardMedia style={styles.media}>
-                            <img className="productImages" src={product.image_url} width='60%' alt=""/>
-                        </CardMedia >
-    
+                    <Grid style={styles.root} container spacing={20}>
+                        <Card style={styles.card}>
+                            <Typography align="center"><p className='titleFont'>{product.title}</p></Typography>
+                            <CardMedia style={styles.media}>
+                                <img className="productImages" src={product.image_url} width='60%' alt="" />
+                            </CardMedia >
                             <p className='productDescriptions'>{product.description}</p>
-                      
-                        {/* inner card includes input form  */}
-                        <Card>
-                            <MessageInputForm
-                            key={product.id}
-                            product={product}
-                            getImages={this.getImages}/>
+                            {/* inner card includes input form  */}
+                            {/* <Card> */}
+                                <MessageInputForm
+                                    key={product.id}
+                                    product={product}
+                                    getImages={this.getImages} />
+                            {/* </Card> */}
                         </Card>
-                    </Card>
                     </Grid>
                 </div>
+                </div>
             )
-        
+
         })
 
         return (
-          
+
             <div>
-                <div className = 'entryPanel'>
-                <p className='appLogo'>MarketSunday</p>
-                <p className='loginBtn'>Are you a shop owner?  <Button href="#flat-buttons"><Link to="/home">Login</Link></Button></p>
+                <div className='entryPanel'>
+                    <p className='appLogo'>MarketSunday</p>
+                    <p className='loginBtn'>Are you a shop owner?  <Button href="#flat-buttons"><Link to="/home">Login</Link></Button></p>
                 </div>
-                <ShopDescriptors/>
+                <ShopDescriptors />
                 <div className='products' style={styles.root}>
-                {frontPageProducts}
+                    {frontPageProducts}
                 </div>
             </div>
-           
+
         );
     }
 }

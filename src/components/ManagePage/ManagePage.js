@@ -8,6 +8,7 @@ import Grid from 'material-ui/Grid';
 import css from '../ManagePage/ManagePage.css'
 import Button from 'material-ui/Button';
 import ShopDescriptors from '../FrontPage/ShopDescriptors'
+import Maincss from '../../styles/main.css'
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';

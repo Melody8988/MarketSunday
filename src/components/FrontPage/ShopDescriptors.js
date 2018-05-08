@@ -9,7 +9,7 @@ class ShopDescriptors extends Component {
     render(){
         return(
             <div className='shopInfo'>
-                <div className='test'></div>
+                <div className='shopNameTopEdging'></div>
                 <h1 className='shopName'>MODscintilla</h1>
                 <h3 className='about'>Suas error facilis at eam, ludus delicata mea ea. Et eos omnium iuvaret equidem, epicurei praesent scripserit cu has. Commune repudiare cu eum.</h3>
                 </div>

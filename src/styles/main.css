@@ -13,6 +13,14 @@ body {
     color: #ece7e7;
 }
 
+/* FRONT PAGE INPUT FIELD  */
+.messageVendor{
+    font-size: 11px;
+}
+
+.inputName{
+    height: 12px;
+}
 .entryPanel{
     display: flex;
     color: black;
@@ -30,6 +38,11 @@ body {
     margin-left: 30px;
 }
 
+.titleFont{
+    font-family: New Century Schoolbook, serif;
+    font-size: 20px;
+}
+
 .shopName{
     color: white;
     font-family: 'Lato', sans-serif;
@@ -38,12 +51,14 @@ body {
     
 }
 
-.test{
+.cardTable{
+    margin: 0 auto;
+}
+
+.shopNameTopEdging{
     height: 10px;
 }
-.productDescriptions{
-    font-family: 'Lato', sans-serif;
-}
+
 .about{
   font-size: 15px;
   color: white ;
@@ -81,7 +96,7 @@ body {
     width: auto;
 }
 .products{
-    margin-left: 100px;
+    align-content: center;
 }
 
 form {
@@ -124,7 +139,9 @@ input[type="submit"] {
   background-color: #36383a;
   width: 100%;
   border-radius: 0px;
+  
 }
+
 
 ul {
     list-style-type: none;

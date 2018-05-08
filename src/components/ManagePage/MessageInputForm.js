@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 
+// EXPANSION PANEL FEATURE
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import ExpansionPanel, {
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+} from 'material-ui/ExpansionPanel';
+import Typography from 'material-ui/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 class MessageInputForm extends Component{
     constructor(props){
         super(props)
@@ -46,12 +56,20 @@ class MessageInputForm extends Component{
     render(){
         return (
             <div>
-            <p>Message the vendor about this product:</p>
-                            <input value={this.state.newMessage.name} onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
-                            <input value={this.state.newMessage.email}  onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
-                            <input value={this.state.newMessage.message}  onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
-                            <p><Button onClick={this.handleSendNewMessage} color="secondary">Send!</Button></p>
+            <ExpansionPanel>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <p style={{height: '12px', display: 'block', margin: '0'}} className='messageVendor'>Message the vendor about this product</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails style={{height: '150px', wrap: 'normal'}}>
+                            <input style={{height: '12px'}} value={this.state.newMessage.name} onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
+                            <input style={{height: '12px'}} className= 'inputEmail' value={this.state.newMessage.email}  onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
+                            <input style={{height: '12px'}} className= 'inputMessage' value={this.state.newMessage.message}  onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
+                            <Button onClick={this.handleSendNewMessage} color="secondary">Send!</Button>
+            </ExpansionPanelDetails>
+            </ExpansionPanel>
+
                             </div>
+                         
         )
     }
 }
