@@ -17,7 +17,7 @@ import FrontPage from './components/FrontPage/FrontPage'
 import './styles/main.css';
 
 const App = () => (
-  <div>
+  <div className='frontPage'>
     
     {/* <Header title="Title" /> */}
     <Router>

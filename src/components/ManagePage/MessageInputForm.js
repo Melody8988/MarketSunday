@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from 'material-ui/Button';
 
 class MessageInputForm extends Component{
     constructor(props){
@@ -27,7 +28,7 @@ class MessageInputForm extends Component{
         }
     }
 
-    handleSendNewMessage = () => {
+    handleSendNewMessage = (propertyName, event) => {
         this.props.dispatch({
             type: 'ADD_MESSAGE', 
             payload: this.state.newMessage
@@ -42,7 +43,7 @@ class MessageInputForm extends Component{
                             <input onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
                             <input onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
                             <input onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
-                            <button onClick={this.handleSendNewMessage}>Send!</button>
+                            <p><Button onClick={this.handleSendNewMessage} color="secondary">Send!</Button></p>
                             </div>
         )
     }

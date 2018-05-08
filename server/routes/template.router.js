@@ -4,7 +4,7 @@ const router = express.Router();
 
 //GET existing products from postgreSQL
 router.get('/', (req, res) => {
-    const queryText = `SELECT * from "galleryitems"`
+    const queryText = `SELECT * FROM "galleryitems" ORDER BY "id" ASC;`
     pool.query(queryText).then((result) => {
         res.send(result.rows)
         console.log(result.rows)

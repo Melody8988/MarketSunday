@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card';
 import MessageInputForm from './MessageInputForm'
-// import ProductStyle from './ProductItemsStyles'
 import css from '../ManagePage/ManagePage.css'
 
+//CARDS
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Card, { CardActions, CardContent, CardMedia, CardHeader, CardText } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 
+const styles = {
+    root:{
+        flexWrap: 'wrap',
+        display: 'flex',
+        
+    },
+    card: {
+        padding: '10px',
+        margin: '30px',
+        width: '300px',
+        flexWrap: 'wrap',
+       
+    },
+    media: {
+        width: '500px',
+    }
+  };
 
 class ProductItem extends Component {
     constructor(props) {
@@ -90,28 +112,28 @@ class ProductItem extends Component {
 
         //Display products as cards
         return (
-            <div className = 'cards' key={this.props.product.id}>
+            <div style={styles.root} className = 'cards' key={this.props.product.id}>
                 {/* outer card includes title, image, description */}
-                <Card style={{ width: '30%' }} >
-                    <CardHeader>
+                <Card style={styles.card}>
+                    {/* <CardHeader> */}
                         {/* <p onClick={this.handleEdit}>{product.title}</p> */}
                         {title}
-                    </CardHeader>
-                    <CardMedia>
+                    {/* </CardHeader> */}
+                    <CardMedia style={styles.media}>
                         <img className="productImages" src={this.props.product.image_url} width='60%' alt="" />
                     </CardMedia>
-                    <CardText>
+                    {/* <CardText> */}
                         {description}
                         <button onClick={this.handleDelete}>Delete</button>
-                    </CardText>
+                    {/* </CardText> */}
                     {/* inner card includes input form  */}
-                    <Card>
+                    {/* <Card> */}
                         <p>Message the vendor about this product:</p>
                         <input placeholder="Name"></input><br />
                         <input placeholder="Email"></input><br />
                         <input placeholder="Message"></input><br />
-                        <button>Send!</button>
-                    </Card>
+                        <p><Button color="secondary">Send!</Button></p>
+                    {/* </Card> */}
                 </Card>
             </div>
         )

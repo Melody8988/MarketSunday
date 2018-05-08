@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
 import Nav from '../../components/Nav/Nav';
 import ProductItems from './ProductItems'
 import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
+import Grid from 'material-ui/Grid';
 import css from '../ManagePage/ManagePage.css'
-
-
-
-
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
+
+const styles = {
+  root:{
+      flexWrap: 'wrap',
+      display: 'flex', 
+  },
+};
 
 class ManagePage extends Component {
   constructor(props) {
@@ -117,7 +120,9 @@ class ManagePage extends Component {
           options={options}
           onSuccess={this.handleUpload}
         />
+        <div className='products' style={styles.root}>
         {frontPageProducts}
+        </div>
       </div>
     );
   }

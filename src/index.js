@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { createMuiTheme } from 'material-ui/styles';
+import blue from 'material-ui/colors/blue';
 
 
 import reducer from './redux/reducers';
@@ -12,8 +14,14 @@ import reducer from './redux/reducers';
 import App from './App';
 import rootSaga from './redux/sagas';
 
-// Initializing to an empty object, but here is where you could
-// preload your redux state with initial values (from localStorage, perhaps)
+const theme = createMuiTheme({
+  palette: {
+    type: 'light',
+  },
+});
+
+// Initializing to an empty object, but could
+// preload redux state with initial values (from localStorage, perhaps)
 const preloadedState = {};
 const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
@@ -33,7 +41,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider>
+    <MuiThemeProvider theme={theme}>
       <App />
       </MuiThemeProvider>
   </Provider>,

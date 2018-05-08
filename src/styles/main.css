@@ -13,6 +13,56 @@ body {
     color: #ece7e7;
 }
 
+.entryPanel{
+    display: flex;
+    color: black;
+    font-family: Helvetica;
+    font-weight: 100;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.ownerName{
+    color: white;
+    font-family: New Century Schoolbook, serif;
+    font-weight: lighter;
+    margin-left: 30px;
+}
+
+.shopName{
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 150;
+    margin-left: 30px;
+}
+.about{
+  font-size: 15px;
+  color: white ;
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter; 
+  margin-left: 30px;
+}
+
+.appLogo{
+    margin-left: 10px;
+}
+
+.loginBtn{
+    margin-top: 10px;
+    position: absolute; 
+    right: 10px;
+}
+.link{
+    color: black;
+}
+
+.shopInfo {
+    background-image: url("pexels-photo-382420.jpeg");
+    height: 300px;
+    width: auto;
+}
+
 form {
     background-color: #dbd5d5;
     width: 30%;
@@ -24,13 +74,6 @@ form {
     align-content: center;
   
 }
-
-/* .imageDiv{ */
-    /* background-image: url(bench-garden-grass-334978.jpg); */
-    /* background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%; 
-} */
 
 input {
     margin: 5px;

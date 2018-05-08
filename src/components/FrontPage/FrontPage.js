@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Card, CardMedia, CardHeader, CardText } from 'material-ui/Card'
+import css from '../../styles/main.css'
 import MessageInputForm from '../ManagePage/MessageInputForm'
+import headPhoto from '../../styles/pexels-photo-382420.jpeg'
 
-// GRIDS
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-// import Grid from 'material-ui/Grid';
-// // import { FormLabel, FormControlLabel } from 'material-ui/Form';
-// import Radio, { RadioGroup } from 'material-ui/Radio';
-// import Paper from 'material-ui/Paper';
+//CARDS
+import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+// import FrontPageStyling from './FrontPageStyling'
 
-const styles = theme => ({
-    root: {
-      flexGrow: 1,
+const styles = {
+    root:{
+        flexWrap: 'wrap',
+        display: 'flex',
+        margin: 'auto',
+       
     },
-    paper: {
-      height: 140,
-      width: 100,
+    card: {
+        padding: '10px',
+        margin: '30px',
+        width: '300px',
+        flexWrap: 'wrap',
+       
     },
-    control: {
-      padding: theme.spacing.unit * 2,
+    media: {
+        width: '500px',
     },
-  });
-
+  };
 
 class FrontPage extends Component {
     constructor(props) {
@@ -43,16 +48,18 @@ class FrontPage extends Component {
         //map through products recieved from imageSaga 
         //frontReducer comes from combineReducers function in index.js
         let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
+           
             return (
-                <div key={product.id}>
+                <div className = 'cards' key={product.id}>
                     {/* outer card includes title, image, description */}
-                    <Card style={{ width: '30%' }} >
-                        <CardHeader>
+                    <Grid style={styles.root} container spacing={24}>
+                    <Card style={styles.card}>
+                        {/* <CardHeader> */}
                             <p>{product.title}</p>
-                        </CardHeader>
-                        <CardMedia>
+                        {/* </CardHeader> */}
+                        <CardMedia style={styles.media}>
                             <img className="productImages" src={product.image_url} width='60%' alt=""/>
-                        </CardMedia>
+                        </CardMedia >
                         <CardText>
                             <p>{product.description}</p>
                         </CardText>
@@ -64,20 +71,31 @@ class FrontPage extends Component {
                             getImages={this.getImages}/>
                         </Card>
                     </Card>
+                    </Grid>
                 </div>
             )
+        
         })
 
         return (
+          
             <div>
-                <h1>Shop name</h1>
-                <h2>Shop info</h2>
-                <h3>Shop contact</h3>
+            
+                <div className = 'entryPanel'>
+                <p className='appLogo'>MarketSunday</p>
+                <p className='loginBtn'>Are you a shop owner?  <Button href="#flat-buttons"><Link to="/home">Login</Link></Button></p>
+                </div>
+                <div className='shopInfo'>
+                <h1 className='shopName'>MODscintilla</h1>
+                <h3 className='about'>Suas error facilis at eam, ludus delicata mea ea. Et eos omnium iuvaret equidem, epicurei praesent scripserit cu has. Commune repudiare cu eum.</h3>
+                </div>
+                <div className='loginBtn'>
+                </div>
+                <div className='products' style={styles.root}>
                 {frontPageProducts}
-                <div>
-                    <Link to="/home">Login</Link>
                 </div>
             </div>
+           
         );
     }
 }

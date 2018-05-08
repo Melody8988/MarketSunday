@@ -4,6 +4,11 @@ import Nav from '../../components/Nav/Nav';
 import ResponsesItems from './ResponsesItems'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
+//CARDS
+import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 
 class ResponsesPage extends Component {
   componentDidMount() {
