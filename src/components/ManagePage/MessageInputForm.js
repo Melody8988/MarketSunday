@@ -60,10 +60,16 @@ class MessageInputForm extends Component{
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <p style={{height: '12px', display: 'block', margin: '0'}} className='messageVendor'>Message the vendor about this product</p>
             </ExpansionPanelSummary>
-            <ExpansionPanelDetails style={{height: '150px', wrap: 'normal'}}>
+            <ExpansionPanelDetails style={{margin: '0'}}>
                             <input style={{height: '12px'}} value={this.state.newMessage.name} onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
+            </ExpansionPanelDetails>
+            <ExpansionPanelDetails>
                             <input style={{height: '12px'}} className= 'inputEmail' value={this.state.newMessage.email}  onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
+            </ExpansionPanelDetails>
+            <ExpansionPanelDetails>
                             <input style={{height: '12px'}} className= 'inputMessage' value={this.state.newMessage.message}  onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
+            </ExpansionPanelDetails>
+            <ExpansionPanelDetails>
                             <Button onClick={this.handleSendNewMessage} color="secondary">Send!</Button>
             </ExpansionPanelDetails>
             </ExpansionPanel>

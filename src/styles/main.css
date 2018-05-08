@@ -27,7 +27,7 @@ body {
     font-family: Helvetica;
     font-weight: 100;
     font-size: 20px;
-    text-align: center;
+    text-align: center; 
     margin-bottom: 5px;
 }
 
@@ -49,10 +49,6 @@ body {
     font-weight: 150;
     margin-left: 30px;
     
-}
-
-.cardTable{
-    margin: 0 auto;
 }
 
 .shopNameTopEdging{

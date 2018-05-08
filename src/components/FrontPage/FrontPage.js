@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import css from '../../styles/main.css'
-import MessageInputForm from '../ManagePage/MessageInputForm'
-import headPhoto from '../../styles/pexels-photo-382420.jpeg'
 import ShopDescriptors from './ShopDescriptors'
 
 //CARDS
-import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import Grid from 'material-ui/Grid';
-// import FrontPageStyling from './FrontPageStyling'
+import DuplicatedProducts from './DuplicatedProducts'
 
 const styles = {
     root: {
@@ -55,29 +49,13 @@ class FrontPage extends Component {
         let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
 
             return (
-                <div className='cardTable'>
-                <div className='cards' key={product.id}>
-                    {/* outer card includes title, image, description */}
-                    <Grid style={styles.root} container spacing={20}>
-                        <Card style={styles.card}>
-                            <Typography align="center"><p className='titleFont'>{product.title}</p></Typography>
-                            <CardMedia style={styles.media}>
-                                <img className="productImages" src={product.image_url} width='60%' alt="" />
-                            </CardMedia >
-                            <p className='productDescriptions'>{product.description}</p>
-                            {/* inner card includes input form  */}
-                            {/* <Card> */}
-                                <MessageInputForm
-                                    key={product.id}
-                                    product={product}
-                                    getImages={this.getImages} />
-                            {/* </Card> */}
-                        </Card>
-                    </Grid>
-                </div>
+                <div className='cards'>
+                    <DuplicatedProducts
+                        key={product.id}
+                        product={product}
+                    />
                 </div>
             )
-
         })
 
         return (
