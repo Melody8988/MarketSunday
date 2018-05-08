@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-import css from '../LoginPage/LoginPage.css'
 // import image from '../LoginPage/bench-garden-grass-334978.jpg'
 
 

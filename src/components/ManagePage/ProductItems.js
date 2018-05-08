@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MessageInputForm from './MessageInputForm'
 import css from '../ManagePage/ManagePage.css'
 
 //CARDS
@@ -15,7 +14,7 @@ const styles = {
     root:{
         flexWrap: 'wrap',
         display: 'flex',
-        
+
     },
     card: {
         padding: '10px',
@@ -116,7 +115,6 @@ class ProductItem extends Component {
                 {/* outer card includes title, image, description */}
                 <Card style={styles.card}>
                     {/* <CardHeader> */}
-                        {/* <p onClick={this.handleEdit}>{product.title}</p> */}
                         {title}
                     {/* </CardHeader> */}
                     <CardMedia style={styles.media}>
@@ -124,16 +122,9 @@ class ProductItem extends Component {
                     </CardMedia>
                     {/* <CardText> */}
                         {description}
-                        <button onClick={this.handleDelete}>Delete</button>
+                        <Button href="#flat-buttons" color="secondary" onClick={this.handleDelete}>Delete</Button>
                     {/* </CardText> */}
-                    {/* inner card includes input form  */}
-                    {/* <Card> */}
-                        <p>Message the vendor about this product:</p>
-                        <input placeholder="Name"></input><br />
-                        <input placeholder="Email"></input><br />
-                        <input placeholder="Message"></input><br />
-                        <p><Button color="secondary">Send!</Button></p>
-                    {/* </Card> */}
+        
                 </Card>
             </div>
         )

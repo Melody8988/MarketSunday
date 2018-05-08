@@ -1,5 +1,6 @@
 import {call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 //SAGA TO GET VIEWER RESPONSES FROM DB
 function* getResponsesSaga(action) {
@@ -22,6 +23,7 @@ function* addMessageSaga(action){
             type: 'GET_RESPONSES', 
             payload: allNewResponses.data
         })
+        swal('Message Sent!')
     } catch (error) {
         console.log('addMessageSaga error:', error)
     }

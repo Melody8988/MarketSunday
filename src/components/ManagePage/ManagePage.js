@@ -6,6 +6,8 @@ import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
 import Grid from 'material-ui/Grid';
 import css from '../ManagePage/ManagePage.css'
+import Button from 'material-ui/Button';
+import ShopDescriptors from '../FrontPage/ShopDescriptors'
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
@@ -105,15 +107,13 @@ class ManagePage extends Component {
       
       <div>
         <div>
+      
+        <Button href="#flat-buttons" color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
           {content}
           <Nav />
-          <button className='logOut' onClick={this.logout}>Log Out</button>
+          
         </div>
-        <h1>MODscintilla</h1>
-        <h2>Giovanna Massard</h2>
-        <h3>Phone: 123-234-1234</h3>
-        <h3>Email: gmass@gmail.com</h3>
-        {/* <button onClick={this.addImage}>ADD</button> */}
+        <ShopDescriptors/>
         <ReactFilestack
           apikey={apiKey}
           buttonText="Add new Product"

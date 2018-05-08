@@ -35,6 +35,14 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 150;
     margin-left: 30px;
+    
+}
+
+.test{
+    height: 10px;
+}
+.productDescriptions{
+    font-family: 'Lato', sans-serif;
 }
 .about{
   font-size: 15px;
@@ -42,6 +50,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: lighter; 
   margin-left: 30px;
+  margin-right: 30px;
 }
 
 .appLogo{
@@ -57,17 +66,28 @@ body {
     color: black;
 }
 
+.logOut{
+    position: absolute; 
+    right: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 .shopInfo {
     background-image: url("pexels-photo-382420.jpeg");
+    background-size: 100%;
+    background-repeat: no-repeat;
     height: 300px;
     width: auto;
+}
+.products{
+    margin-left: 100px;
 }
 
 form {
     background-color: #dbd5d5;
     width: 30%;
     height: 30%px;
-    opacity: 0.5;
     margin: 90px auto;
     padding: 25px;
     border-radius: 10px;
@@ -101,7 +121,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #563047;
+  background-color: #36383a;
   width: 100%;
   border-radius: 0px;
 }
@@ -128,6 +148,5 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    text-decoration: underline;
-    color: #eee;
+    color: #c0c3c6;
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import css from '../../styles/main.css'
 import MessageInputForm from '../ManagePage/MessageInputForm'
 import headPhoto from '../../styles/pexels-photo-382420.jpeg'
+import ShopDescriptors from './ShopDescriptors'
 
 //CARDS
 import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
@@ -17,6 +18,7 @@ const styles = {
         flexWrap: 'wrap',
         display: 'flex',
         margin: 'auto',
+        width: 'auto'
        
     },
     card: {
@@ -60,9 +62,9 @@ class FrontPage extends Component {
                         <CardMedia style={styles.media}>
                             <img className="productImages" src={product.image_url} width='60%' alt=""/>
                         </CardMedia >
-                        <CardText>
-                            <p>{product.description}</p>
-                        </CardText>
+    
+                            <p className='productDescriptions'>{product.description}</p>
+                      
                         {/* inner card includes input form  */}
                         <Card>
                             <MessageInputForm
@@ -80,17 +82,11 @@ class FrontPage extends Component {
         return (
           
             <div>
-            
                 <div className = 'entryPanel'>
                 <p className='appLogo'>MarketSunday</p>
                 <p className='loginBtn'>Are you a shop owner?  <Button href="#flat-buttons"><Link to="/home">Login</Link></Button></p>
                 </div>
-                <div className='shopInfo'>
-                <h1 className='shopName'>MODscintilla</h1>
-                <h3 className='about'>Suas error facilis at eam, ludus delicata mea ea. Et eos omnium iuvaret equidem, epicurei praesent scripserit cu has. Commune repudiare cu eum.</h3>
-                </div>
-                <div className='loginBtn'>
-                </div>
+                <ShopDescriptors/>
                 <div className='products' style={styles.root}>
                 {frontPageProducts}
                 </div>

@@ -13,7 +13,7 @@ class MessageInputForm extends Component{
                 message: '',
                 resolved: '', 
                 galleryitems_id: this.props.product.id
-            }
+            },
         }
     }
 
@@ -33,16 +33,23 @@ class MessageInputForm extends Component{
             type: 'ADD_MESSAGE', 
             payload: this.state.newMessage
         })
-    }
+        this.setState({
+            newMessage: {
+                name: '',
+                email: '',
+                message: '',
+            }
+    })
+}
 
     
     render(){
         return (
             <div>
             <p>Message the vendor about this product:</p>
-                            <input onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
-                            <input onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
-                            <input onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
+                            <input value={this.state.newMessage.name} onChange={this.handleChangeFor('name')} placeholder="Name"></input><br/>
+                            <input value={this.state.newMessage.email}  onChange={this.handleChangeFor('email')} placeholder="Email"></input><br/>
+                            <input value={this.state.newMessage.message}  onChange={this.handleChangeFor('message')} placeholder="Message"></input><br/>
                             <p><Button onClick={this.handleSendNewMessage} color="secondary">Send!</Button></p>
                             </div>
         )

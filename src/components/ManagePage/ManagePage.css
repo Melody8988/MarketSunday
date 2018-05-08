@@ -14,12 +14,12 @@
   text-align: center;
 }
 
-.logOut{
+/* .logOut{
     position: absolute; 
     right: 0;
     margin-top: 10px;
     margin-right: 10px;
-}
+} */
 
 .cards{
   display: flex;   
