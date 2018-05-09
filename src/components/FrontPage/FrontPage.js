@@ -49,7 +49,7 @@ class FrontPage extends Component {
         let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
 
             return (
-                <div className='cards'>
+                <div className='cards' key={product.id}>
                     <DuplicatedProducts
                         key={product.id}
                         product={product}

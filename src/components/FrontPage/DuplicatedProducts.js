@@ -45,7 +45,7 @@ class DuplicatedProducts extends Component {
         return(
             <div>
             {/* outer card includes title, image, description */}
-            <Grid style={styles.root} container spacing={20}>
+            <Grid style={styles.root} container spacing={24}>
             <Card style={styles.card}>
                 <Typography align="center"><p className='titleFont'>{this.props.product.title}</p></Typography>
                 <CardMedia style={styles.media}>

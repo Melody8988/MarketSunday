@@ -1,32 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import css from '../ManagePage/ManagePage.css'
+import swal from 'sweetalert';
 
 //CARDS
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia, CardHeader, CardText } from 'material-ui/Card';
+import Card, { CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import Edit from '@material-ui/icons/Edit';
 
 const styles = {
-    root:{
+    root: {
         flexWrap: 'wrap',
         display: 'flex',
-
+        margin: 'auto',
+        width: 'auto',
+        justify: 'center',
+        maxWidth: '1140px'
     },
     card: {
-        padding: '10px',
-        margin: '30px',
+        padding: '15px',
+        margin: '20px',
         width: '300px',
         flexWrap: 'wrap',
-       
+    },
+    title: {
+        align: 'center',
     },
     media: {
         width: '500px',
-    }
-  };
+    },
+};
 
 class ProductItem extends Component {
     constructor(props) {
@@ -71,12 +75,13 @@ class ProductItem extends Component {
     }//end handleChange
 
     //Delete send product item request
-    handleDelete = (event) => {
+    handleDeleteImage = (event) => {
+        // swal('Are you sure you want to delete this product from the gallery?')
         this.props.dispatch({
             type: 'DELETE_IMAGE',
             payload: this.state
         })
-    }//end handleDeleteReflec 
+    }//end handleDeleteImage
 
     render() {
         //Toggle what TITLE looks like whether it is being edited or not 
@@ -84,14 +89,14 @@ class ProductItem extends Component {
         if (this.state.editingTitle === true) {
             title = (
                 <div>
-                    <textarea defaultValue={this.props.product.title} onChange={this.handleChange('title')} ></ textarea>
-                    <button onClick={this.handleEditTitle}>Save</button>
+                    <textarea style={{fontSize: '15px', borderRadius: '3px'}} rows="1" cols="35" defaultValue={this.props.product.title} onChange={this.handleChange('title')} ></ textarea>
+                    <Button style={{marginTop: '10px'}} href="#flat-buttons" color="secondary" onClick={this.handleEditTitle}>Save</Button>
                 </div>
             )
         } else if ((this.state.editingTitle === false) & this.props.product.title === null || this.props.product.title === '') {
-            title = (<div onClick={this.handleEditTitle}><p>Title:</p></div>)
+            title = (<div onClick={this.handleEditTitle}><p style={{color: '#b2b2b2', fontStyle: 'italic' }}>Type new title here <Edit style={{float: 'right', color: '#b2b2b2'}}/></p></div>)
         } else {
-            title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}</p></div>)
+            title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}<Edit style={{float: 'right'}}/></p></div>)
         }//end title if statements
 
         //Toggle what DESCRIPTION looks like whether it is being edited or not 
@@ -99,33 +104,29 @@ class ProductItem extends Component {
         if (this.state.editingDescription === true) {
             description = (
                 <div>
-                    <textarea defaultValue={this.props.product.description} onChange={this.handleChange('description')}></ textarea>
-                    <button onClick={this.handleEditDescription}>Save</button>
+                    <textarea style={{fontSize: '15px', borderRadius: '3px'}} rows="4" cols="35" defaultValue={this.props.product.description} onChange={this.handleChange('description')}></ textarea>
+                    <Button style={{marginTop: '10px'}} href="#flat-buttons" color="secondary" onClick={this.handleEditDescription}>Save</Button>
                 </div>
             )
         } else if ((this.state.editingDescription === false) & this.props.product.description === null || this.props.product.description === '') {
-            description = (<div onClick={this.handleEditDescription}><p>Description: </p></div>)
+            description = (<div onClick={this.handleEditDescription}><p style={{color: '#b2b2b2', fontStyle: 'italic' }}>Type new description here <Edit style={{float: 'right', color: '#b2b2b2'}}/></p></div>)
         } else {
-            description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description}</p></div>)
+            description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description} <Edit style={{float: 'right'}}/></p></div>)
         }//end description if statements
 
         //Display products as cards
         return (
-            <div style={styles.root} className = 'cards' key={this.props.product.id}>
-                {/* outer card includes title, image, description */}
-                <Card style={styles.card}>
-                    {/* <CardHeader> */}
-                        {title}
-                    {/* </CardHeader> */}
-                    <CardMedia style={styles.media}>
-                        <img className="productImages" src={this.props.product.image_url} width='60%' alt="" />
-                    </CardMedia>
-                    {/* <CardText> */}
-                        {description}
-                        <Button href="#flat-buttons" color="secondary" onClick={this.handleDelete}>Delete</Button>
-                    {/* </CardText> */}
-        
-                </Card>
+            <div className='cards' key={this.props.product.id}>
+                <Grid style={styles.root} container spacing={24}>
+                    <Card style={styles.card}>
+                        <Typography align="center"><p className='titleFont'>{title}</p></Typography>
+                        <CardMedia style={styles.media}>
+                            <img className="productImages" src={this.props.product.image_url} width='60%' alt="" />
+                        </CardMedia >
+                        <p className='productDescriptions'>{description}</p>
+                        <Button href="#flat-buttons" color="secondary" onClick={this.handleDeleteImage}>Delete</Button>
+                    </Card>
+                </Grid>
             </div>
         )
     }//end render
