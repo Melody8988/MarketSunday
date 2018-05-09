@@ -63,7 +63,7 @@ class FrontPage extends Component {
             <div>
                 <div className='entryPanel'>
                     <p className='appLogo'>MarketSunday</p>
-                    <p className='loginBtn'>Are you a shop owner?  <Button href="#flat-buttons"><Link to="/home">Login</Link></Button></p>
+                    <p className='loginBtn'>Are you a shop owner?  <Button><Link to="/home">Login</Link></Button></p>
                 </div>
                 <ShopDescriptors />
                 <div className='products' style={styles.root}>

@@ -109,7 +109,7 @@ class ManagePage extends Component {
       <div>
         <div>
       
-        <Button href="#flat-buttons" color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
+        <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
           {content}
           <Nav />
           

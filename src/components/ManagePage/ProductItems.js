@@ -24,12 +24,31 @@ const styles = {
         width: '300px',
         flexWrap: 'wrap',
     },
-    title: {
+    titleDescriptionNull: {
         align: 'center',
+        fontFamily: 'New Century Schoolbook, serif',
+        fontSize: '20px',
+        color: '#b2b2b2',
+        fontStyle: 'italic',
+        margin: '20px'
+    },
+    title: {
+        fontFamily: 'New Century Schoolbook, serif',
+        fontSize: '20px',
+        margin: '20px'
+    },
+    description: {
+        margin: '20px',
+
     },
     media: {
         width: '500px',
     },
+
+    titleSave: {
+        marginBottom: '10px',
+        marginTop: '10px',
+    }
 };
 
 class ProductItem extends Component {
@@ -89,14 +108,12 @@ class ProductItem extends Component {
         if (this.state.editingTitle === true) {
             title = (
                 <div>
-                    <textarea style={{fontSize: '15px', borderRadius: '3px'}} rows="1" cols="35" defaultValue={this.props.product.title} onChange={this.handleChange('title')} ></ textarea>
-                    <Button style={{marginTop: '10px'}} href="#flat-buttons" color="secondary" onClick={this.handleEditTitle}>Save</Button>
+                    <textarea style={{ fontSize: '15px', borderRadius: '3px' }} rows="1" cols="35" defaultValue={this.props.product.title} onChange={this.handleChange('title')} ></ textarea>
+                    <Button color="secondary" style={styles.titleSave} onClick={this.handleEditTitle}>Save</Button>
                 </div>
             )
-        } else if ((this.state.editingTitle === false) & this.props.product.title === null || this.props.product.title === '') {
-            title = (<div onClick={this.handleEditTitle}><p style={{color: '#b2b2b2', fontStyle: 'italic' }}>Type new title here <Edit style={{float: 'right', color: '#b2b2b2'}}/></p></div>)
         } else {
-            title = (<div onClick={this.handleEditTitle}><p>{this.props.product.title}<Edit style={{float: 'right'}}/></p></div>)
+            title = (<Typography onClick={this.handleEditTitle} style={styles.title}>{this.props.product.title}<Edit style={{ float: 'right', marginBottom: '20px' }} /></Typography>)
         }//end title if statements
 
         //Toggle what DESCRIPTION looks like whether it is being edited or not 
@@ -104,14 +121,12 @@ class ProductItem extends Component {
         if (this.state.editingDescription === true) {
             description = (
                 <div>
-                    <textarea style={{fontSize: '15px', borderRadius: '3px'}} rows="4" cols="35" defaultValue={this.props.product.description} onChange={this.handleChange('description')}></ textarea>
-                    <Button style={{marginTop: '10px'}} href="#flat-buttons" color="secondary" onClick={this.handleEditDescription}>Save</Button>
+                    <textarea style={{ fontSize: '15px', borderRadius: '3px' }} rows="2" cols="35" defaultValue={this.props.product.description} onChange={this.handleChange('description')}></ textarea>
+                    <Button color="secondary" onClick={this.handleEditDescription}>Save</Button>
                 </div>
             )
-        } else if ((this.state.editingDescription === false) & this.props.product.description === null || this.props.product.description === '') {
-            description = (<div onClick={this.handleEditDescription}><p style={{color: '#b2b2b2', fontStyle: 'italic' }}>Type new description here <Edit style={{float: 'right', color: '#b2b2b2'}}/></p></div>)
         } else {
-            description = (<div onClick={this.handleEditDescription}><p>{this.props.product.description} <Edit style={{float: 'right'}}/></p></div>)
+            description = (<Typography onClick={this.handleEditDescription} style={styles.description}>{this.props.product.description} <Edit style={{ float: 'right' }} /></Typography>)
         }//end description if statements
 
         //Display products as cards
@@ -119,12 +134,12 @@ class ProductItem extends Component {
             <div className='cards' key={this.props.product.id}>
                 <Grid style={styles.root} container spacing={24}>
                     <Card style={styles.card}>
-                        <Typography align="center"><p className='titleFont'>{title}</p></Typography>
+                        <div align="center" className='titleFont'>{title}</div>
                         <CardMedia style={styles.media}>
                             <img className="productImages" src={this.props.product.image_url} width='60%' alt="" />
                         </CardMedia >
-                        <p className='productDescriptions'>{description}</p>
-                        <Button href="#flat-buttons" color="secondary" onClick={this.handleDeleteImage}>Delete</Button>
+                        <div className='productDescriptions'>{description}</div>
+                        <Button color="secondary" onClick={this.handleDeleteImage}>Delete</Button>
                     </Card>
                 </Grid>
             </div>

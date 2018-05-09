@@ -27,8 +27,14 @@ const styles = {
         width: '300px',
         flexWrap: 'wrap',
     },
+    
     title: {
-        align: 'center',
+        fontFamily: 'New Century Schoolbook, serif',
+        fontSize: '20px',
+        margin: '20px'
+    },
+    description: {
+        margin: '20px'
     },
     media: {
         width: '500px',
@@ -47,11 +53,11 @@ class DuplicatedProducts extends Component {
             {/* outer card includes title, image, description */}
             <Grid style={styles.root} container spacing={24}>
             <Card style={styles.card}>
-                <Typography align="center"><p className='titleFont'>{this.props.product.title}</p></Typography>
+                <Typography align="center"style={styles.title}>{this.props.product.title}</Typography>
                 <CardMedia style={styles.media}>
                     <img className="productImages" src={this.props.product.image_url} width='60%' alt="" />
                 </CardMedia >
-                <p className='productDescriptions'>{this.props.product.description}</p>
+                <Typography style={styles.description}>{this.props.product.description}</Typography>
                 {/* inner card includes input form  */}
                 <MessageInputForm
                     key={this.props.product.id}
