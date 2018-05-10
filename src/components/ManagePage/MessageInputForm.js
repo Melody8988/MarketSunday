@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 
 // EXPANSION PANEL FEATURE
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
 } from 'material-ui/ExpansionPanel';
-import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class MessageInputForm extends Component{

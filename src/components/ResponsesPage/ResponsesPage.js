@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import ResponsesItems from './ResponsesItems'
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import ShopDescriptors from '../FrontPage/ShopDescriptors';
+import css from '../../styles/main.css'
+// import vendorDirections from '../ResponsesPage/vendorDirections';
 
-//CARDS
-import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
+//passport.js authentication
+import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { triggerLogout } from '../../redux/actions/loginActions';
+
 import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import Grid from 'material-ui/Grid';
+
 
 class ResponsesPage extends Component {
   componentDidMount() {
@@ -24,8 +27,21 @@ class ResponsesPage extends Component {
     }
   }
 
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+    // this.props.history.push('home');
+  }
+
   render() {
     let content = null;
+    if (this.props.user.userName) {
+      content = (
+        <div>
+          <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
+          <div id="welcome" className='welcome'>Welcome, {this.props.user.userName}!<br /></div>
+          <div className='welcome'>View all comments and requests</div></div>
+      );
+    }
 
     let viewerMessages = this.props.reduxState.responsesReducer.map((message) => {
       return (
@@ -36,20 +52,12 @@ class ResponsesPage extends Component {
       )
     })
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          <p>
-            Viewer Comments:
-          </p>
-        </div>
-      );
-    }
-
     return (
       <div>
-        <Nav />
+      
         {content}
+        <Nav />
+        <ShopDescriptors/>
         {viewerMessages}
       </div>
     );

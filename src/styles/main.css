@@ -91,19 +91,45 @@ body {
     height: 300px;
     width: auto;
 }
+
+.loginPhoto {
+    /* background-image: url("large-botanical.jpeg"); */
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: auto; 
+    width: auto;
+    margin-top: 50px;
+
+}
+
 .products{
     align-content: center;
 }
 
+.loginPrompt{
+    font-family: 'Helvetica';
+    font-weight: 5;
+    color: white;
+    
+}
+
 form {
-    background-color: #dbd5d5;
+    background-color: #383838;
     width: 30%;
     height: 30%px;
     margin: 90px auto;
     padding: 25px;
     border-radius: 10px;
     align-content: center;
+    opacity: 0.9;
+    color: white;
   
+}
+
+.welcome{
+    font-style: Helvetica;
+    text-align: center;
+    margin: 20px;
 }
 
 input {

@@ -4,11 +4,10 @@ import Nav from '../../components/Nav/Nav';
 import ProductItems from './ProductItems'
 import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
-import Grid from 'material-ui/Grid';
-import css from '../ManagePage/ManagePage.css'
 import Button from 'material-ui/Button';
 import ShopDescriptors from '../FrontPage/ShopDescriptors'
-import Maincss from '../../styles/main.css'
+import css from '../../styles/main.css'
+
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
@@ -91,15 +90,9 @@ class ManagePage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h3
-            id="welcome"
-          className='welcome'>
-            Welcome, {this.props.user.userName}!<br />
-          </h3>
-          <h5
-          className='manage'>
-            Manage your products here</h5>
-        </div>
+          <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
+          <div id="welcome" className='welcome'>Welcome, {this.props.user.userName}!<br /></div>
+          <div className='welcome'>Manage your products here</div></div>
       );
     }
 
@@ -109,8 +102,8 @@ class ManagePage extends Component {
       <div>
         <div>
       
-        <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
           {content}
+        
           <Nav />
           
         </div>
@@ -120,6 +113,8 @@ class ManagePage extends Component {
           buttonText="Add new Product"
           options={options}
           onSuccess={this.handleUpload}
+          
+        
         />
         <div className='products' style={styles.root}>
         {frontPageProducts}

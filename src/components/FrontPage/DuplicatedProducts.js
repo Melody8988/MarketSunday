@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import css from '../../styles/main.css'
 import MessageInputForm from '../ManagePage/MessageInputForm'
-import headPhoto from '../../styles/pexels-photo-382420.jpeg'
-import ShopDescriptors from './ShopDescriptors'
 
 //CARDS
-import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
-import Button from 'material-ui/Button';
+import Card, { CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 

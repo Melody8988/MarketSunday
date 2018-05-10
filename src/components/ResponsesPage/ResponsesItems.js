@@ -5,10 +5,10 @@ import Moment from 'react-moment';
 //CARDS
 import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import CheckBox from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank'
+
 
 
 const styles = {
@@ -16,14 +16,15 @@ const styles = {
         flexWrap: 'wrap',
         display: 'flex',
         margin: 'auto',
+        
        
     },
     card: {
         padding: '10px',
         margin: '30px',
-        width: '70%',
+        width: '60%',
         flexWrap: 'wrap',
-        align: 'center'
+        justify: 'center'
        
     },
     productTitle: {
@@ -45,12 +46,13 @@ const styles = {
         fontStyle: 'italic',
         fontSize: '14px',
     },
-    // productName: {
-    //     marginBottom: '30px'
-    // },
     productMessage:{
         marginTop: '30px',
         marginBottom: '30px',
+    },
+    resolveStatus: {
+        float: 'right',
+        margin: '10px'
     }
   };
 
@@ -85,11 +87,11 @@ class ResponsesItems extends Component {
     let status;
     if (this.state.resolved === true) {
         status = (
-            <p>Resolved!<CheckBox style={{ float: 'right', marginBottom: '20px' }} /></p>
+            <p style={styles.resolveStatus}>Resolved!<CheckBox onClick={this.updateResolveStatus} style={{ float: 'right', marginBottom: '20px' }} /></p>
         )
     } else if  (this.state.resolved === false){
         status = (
-            <p>Not resolved<CheckBoxOutlineBlank style={{ float: 'right', marginBottom: '20px' }} /></p>
+            <p style={styles.resolveStatus}>Not resolved<CheckBoxOutlineBlank onClick={this.updateResolveStatus} style={{ float: 'right', marginBottom: '20px' }} /></p>
         )
     }
 
@@ -99,15 +101,13 @@ class ResponsesItems extends Component {
                 <Grid style={styles.root} container spacing={24}>
                 <Card style={styles.card}>
                 <div>
+                {status}
                 <p style={styles.productTitle}>{this.props.message.title}</p>
                 <div style={styles.productName}>{this.props.message.name}<p style={styles.productNew}> on <Moment format="MM/DD/YYYY">{this.props.message.date}</Moment></p></div>
-                
-                <p style={styles.productMessage}>{this.props.message.message}</p>
+                <p style={styles.productMessage}>''{this.props.message.message}''</p>
                 <p style={styles.productEmail}>{this.props.message.email}</p>
-                {status}
                 </div>
-                <button onClick={this.updateResolveStatus}>Update</button>
-                <button onClick={this.deleteMessage}>Delete</button>
+                <Button color="secondary" onClick={this.deleteMessage}>Delete</Button>
                 </Card>
                 </Grid>
             </div>

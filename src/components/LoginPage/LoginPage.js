@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-// import image from '../LoginPage/bench-garden-grass-334978.jpg'
+import Button from 'material-ui/Button';
 
 
 const mapStateToProps = state => ({
@@ -62,15 +62,15 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <body className='imageDiv'>
+      <body className='loginPhoto'>
         { this.renderAlert() }
         <div className='imageDiv'>
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
+        <form >
+          <h1 className='loginPrompt'>Login</h1>
           <div>
             <label htmlFor="username">
-              Username:
               <input
+                placeholder='Username'
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -80,21 +80,17 @@ class LoginPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
               <input
                 type="password"
                 name="password"
+                placeholder='Password'
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
-              />
+              /><br/>
+              <Button onClick={this.login}color="secondary">Log In</Button>
             </label>
           </div>
           <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
             {/* <Link to="/register">Register</Link> */}
           </div>
         </form>

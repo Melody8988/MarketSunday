@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import swal from 'sweetalert';
 
 //CARDS
 import Card, { CardMedia } from 'material-ui/Card';
