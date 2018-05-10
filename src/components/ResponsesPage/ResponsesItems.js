@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
+import swal from 'sweetalert';
 
 //CARDS
 import Card, { CardMedia, CardHeader, CardText } from 'material-ui/Card';
@@ -12,18 +13,12 @@ import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank'
 
 
 const styles = {
-    root:{
-        flexWrap: 'wrap',
-        display: 'flex',
-        margin: 'auto',
-        
-       
-    },
+
     card: {
         padding: '10px',
         margin: '30px',
         width: '60%',
-        flexWrap: 'wrap',
+        // flexWrap: 'wrap',
         justify: 'center'
        
     },
@@ -68,10 +63,27 @@ class ResponsesItems extends Component {
 
     deleteMessage = () => {
         console.log('you clicked delete this message?')
-        this.props.dispatch({
-            type: 'DELETE_MESSAGE',
-            payload: this.state
-        })
+
+        swal({
+            text: "Are you sure you want to delete this message?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                this.props.dispatch({
+                    type: 'DELETE_MESSAGE',
+                    payload: this.state
+                })
+              swal("Message successfully deleted", {
+                icon: "success",
+              });
+            } else {
+                console.log('message kept')
+            }
+          });
+    
     }
 
     updateResolveStatus = (event) => {
@@ -98,7 +110,7 @@ class ResponsesItems extends Component {
         return (
             <div>
                 
-                <Grid style={styles.root} container spacing={24}>
+    
                 <Card style={styles.card}>
                 <div>
                 {status}
@@ -109,7 +121,7 @@ class ResponsesItems extends Component {
                 </div>
                 <Button color="secondary" onClick={this.deleteMessage}>Delete</Button>
                 </Card>
-                </Grid>
+                
             </div>
         )
     }

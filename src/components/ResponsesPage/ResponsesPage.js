@@ -12,6 +12,27 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 
 import Button from 'material-ui/Button';
 
+const styles = {
+  root: {
+      
+      display: 'flex',
+      margin: 'auto',
+      justifyContent: 'space-around',
+      display: 'inline-block',
+      alignItems: 'center',
+      width: '80%'
+      
+      
+  },
+  pageRoot: {
+      
+    justifyContent: 'space-around',
+    display: 'inline-block',
+    alignItems: 'center',
+   
+    
+},
+}
 
 class ResponsesPage extends Component {
   componentDidMount() {
@@ -58,7 +79,9 @@ class ResponsesPage extends Component {
         {content}
         <Nav />
         <ShopDescriptors/>
+        <div className='responsesDivs' style={styles.root}>
         {viewerMessages}
+        </div>
       </div>
     );
   }

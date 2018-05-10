@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
 
 //CARDS
 import Card, { CardMedia } from 'material-ui/Card';
@@ -94,12 +95,28 @@ class ProductItem extends Component {
 
     //Delete send product item request
     handleDeleteImage = (event) => {
-        // swal('Are you sure you want to delete this product from the gallery?')
-        this.props.dispatch({
-            type: 'DELETE_IMAGE',
-            payload: this.state
-        })
+        swal({
+            text: "Are you sure you want to delete this item from the gallery?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                this.props.dispatch({
+                    type: 'DELETE_IMAGE',
+                    payload: this.state
+                })
+              swal("Item successfully deleted", {
+                icon: "success",
+              });
+            } else {
+                console.log('message kept')
+            }
+          });
+        
     }//end handleDeleteImage
+
 
     render() {
         //Toggle what TITLE looks like whether it is being edited or not 

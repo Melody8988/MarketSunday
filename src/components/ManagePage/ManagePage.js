@@ -5,7 +5,7 @@ import ProductItems from './ProductItems'
 import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
 import Button from 'material-ui/Button';
-import ShopDescriptors from '../FrontPage/ShopDescriptors'
+// import ShopDescriptors from '../FrontPage/ShopDescriptors'
 import css from '../../styles/main.css'
 
 //passport.js authentication
@@ -16,6 +16,7 @@ const styles = {
   root:{
       flexWrap: 'wrap',
       display: 'flex', 
+      justify: 'center'
   },
 };
 
@@ -47,6 +48,8 @@ class ManagePage extends Component {
     this.props.dispatch(triggerLogout());
     // this.props.history.push('home');
   }
+
+  
 
   //on filestack success
   handleUpload = (result) => {
@@ -107,13 +110,17 @@ class ManagePage extends Component {
           <Nav />
           
         </div>
-        <ShopDescriptors/>
+        <div className='shopInfo'>
+                <div className='shopNameTopEdging'></div>
+                <h1 className='shopName'>MODscintilla</h1>
+                <h3 className='about'>Giovanna Russo</h3>
+                <h3 className='about'>Suas error facilis at eam, ludus delicata mea ea. Et eos omnium iuvaret equidem, epicurei praesent scripserit cu has. Commune repudiare cu eum.</h3>
+                </div>
         <ReactFilestack
           apikey={apiKey}
           buttonText="Add new Product"
           options={options}
           onSuccess={this.handleUpload}
-          
         
         />
         <div className='products' style={styles.root}>

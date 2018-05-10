@@ -23,8 +23,15 @@ function* addMessageSaga(action){
             type: 'GET_RESPONSES', 
             payload: allNewResponses.data
         })
-        swal('Message Sent!')
+        swal({
+            text:'Message Sent!',
+            icon: "success"
+        })
     } catch (error) {
+        swal({
+            text: 'All fields must be completed to send', 
+            icon: 'warning'
+        })
         console.log('addMessageSaga error:', error)
     }
 }//end addMessageSaga

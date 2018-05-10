@@ -24,6 +24,7 @@ class MessageInputForm extends Component{
         }
     }
 
+    //As message input fields change, update newMessage property names
     handleChangeFor = (propertyName) => {
         return (event) => {
             this.setState({
@@ -35,6 +36,7 @@ class MessageInputForm extends Component{
         }
     }
 
+    //On click of send, send new message and clear input fields
     handleSendNewMessage = (propertyName, event) => {
         this.props.dispatch({
             type: 'ADD_MESSAGE', 
@@ -45,6 +47,8 @@ class MessageInputForm extends Component{
                 name: '',
                 email: '',
                 message: '',
+                resolved: '', 
+                galleryitems_id: this.props.product.id
             }
     })
 }
