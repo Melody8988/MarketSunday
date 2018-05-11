@@ -6,7 +6,7 @@ import ReactFilestack, { client } from 'filestack-react';
 import filestack from 'filestack-js';
 import Button from 'material-ui/Button';
 // import ShopDescriptors from '../FrontPage/ShopDescriptors'
-import css from '../../styles/main.css'
+import AddAPhoto from '@material-ui/icons/AddAPhoto';
 
 //passport.js authentication
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -14,10 +14,25 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 
 const styles = {
   root:{
-      flexWrap: 'wrap',
-      display: 'flex', 
-      justify: 'center'
+    flexWrap: 'wrap',
+    display: 'flex',
+    margin: 'auto',
+    width: 'auto',
+    justify: 'center',
+    maxWidth: '1140px'
   },
+  addPhoto: {
+    float: 'right',
+    margin: '30px'
+  },
+  break: {
+    height: '70px'
+  }, 
+  welcomeDiv: {
+    backgroundColor: '#a1d8ed',
+    width: '30px',
+    textAlign: 'center'
+  }
 };
 
 class ManagePage extends Component {
@@ -36,6 +51,7 @@ class ManagePage extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     //get specfic user's existing products
     this.props.dispatch({ type: 'GET_IMAGES' })
+    this.props.dispatch({type: 'GET_SHOPINFO'})
   }
 
   componentDidUpdate() {
@@ -48,8 +64,6 @@ class ManagePage extends Component {
     this.props.dispatch(triggerLogout());
     // this.props.history.push('home');
   }
-
-  
 
   //on filestack success
   handleUpload = (result) => {
@@ -92,10 +106,14 @@ class ManagePage extends Component {
     let content = null;
     if (this.props.user.userName) {
       content = (
-        <div>
+        <div >
           <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
+          <div style={styles.welcomeDiv}>
           <div id="welcome" className='welcome'>Welcome, {this.props.user.userName}!<br /></div>
-          <div className='welcome'>Manage your products here</div></div>
+          <div className='welcome'>Manage your products here</div>
+          <p>{this.props.shop_name}</p>
+          </div>
+          </div>
       );
     }
 
@@ -106,8 +124,20 @@ class ManagePage extends Component {
         <div>
       
           {content}
+          <ReactFilestack
+          apikey={apiKey}
+          buttonText="Add new Product"
+          options={options}
+          onSuccess={this.handleUpload}
+          render={({ onPick }) => (
+            <div>
+              <p onClick={onPick} style={styles.addPhoto}>Upload New Product <AddAPhoto onClick={onPick}></AddAPhoto></p>
+            </div>
+          )}
         
-          <Nav />
+        />
+        <div style={styles.break}></div>
+        <Nav />
           
         </div>
         <div className='shopInfo'>
@@ -116,14 +146,9 @@ class ManagePage extends Component {
                 <h3 className='about'>Giovanna Russo</h3>
                 <h3 className='about'>Suas error facilis at eam, ludus delicata mea ea. Et eos omnium iuvaret equidem, epicurei praesent scripserit cu has. Commune repudiare cu eum.</h3>
                 </div>
-        <ReactFilestack
-          apikey={apiKey}
-          buttonText="Add new Product"
-          options={options}
-          onSuccess={this.handleUpload}
-        
-        />
-        <div className='products' style={styles.root}>
+                
+      
+        <div style={styles.root}>
         {frontPageProducts}
         </div>
       </div>

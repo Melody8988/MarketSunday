@@ -14,6 +14,15 @@ import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank'
 
 const styles = {
 
+    root: {
+        
+        marginLeft: '300px',
+        marginRight: '350px',
+        width: '1000px',
+        justify: 'center',
+        
+    },
+
     card: {
         padding: '10px',
         margin: '30px',
@@ -109,8 +118,7 @@ class ResponsesItems extends Component {
 
         return (
             <div>
-                
-    
+                <Grid style={styles.root} container spacing={24}>
                 <Card style={styles.card}>
                 <div>
                 {status}
@@ -121,7 +129,7 @@ class ResponsesItems extends Component {
                 </div>
                 <Button color="secondary" onClick={this.deleteMessage}>Delete</Button>
                 </Card>
-                
+                </Grid>
             </div>
         )
     }

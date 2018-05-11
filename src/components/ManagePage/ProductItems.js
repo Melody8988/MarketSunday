@@ -147,7 +147,7 @@ class ProductItem extends Component {
 
         //Display products as cards
         return (
-            <div className='cards' key={this.props.product.id}>
+            <div key={this.props.product.id}>
                 <Grid style={styles.root} container spacing={24}>
                     <Card style={styles.card}>
                         <div align="center" className='titleFont'>{title}</div>

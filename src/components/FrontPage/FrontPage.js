@@ -16,12 +16,7 @@ const styles = {
         justify: 'center',
         maxWidth: '1140px'
     },
-    card: {
-        padding: '15px',
-        margin: '20px',
-        width: '300px',
-        flexWrap: 'wrap',
-    },
+
     title: {
         align: 'center',
     },
@@ -49,7 +44,7 @@ class FrontPage extends Component {
         let frontPageProducts = this.props.reduxState.frontReducer.map((product) => {
 
             return (
-                <div className='cards' key={product.id}>
+                <div key={product.id}>
                     <DuplicatedProducts
                         key={product.id}
                         product={product}
@@ -66,7 +61,7 @@ class FrontPage extends Component {
                     <p className='loginBtn'>Are you a shop owner?  <Button><Link to="/home">Login</Link></Button></p>
                 </div>
                 <ShopDescriptors />
-                <div className='products' style={styles.root}>
+                <div style={styles.root}>
                     {frontPageProducts}
                 </div>
             </div>

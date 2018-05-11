@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import ResponsesItems from './ResponsesItems'
 import ShopDescriptors from '../FrontPage/ShopDescriptors';
-import css from '../../styles/main.css'
 // import vendorDirections from '../ResponsesPage/vendorDirections';
 
 //passport.js authentication
@@ -14,23 +13,10 @@ import Button from 'material-ui/Button';
 
 const styles = {
   root: {
-      
-      display: 'flex',
-      margin: 'auto',
-      justifyContent: 'space-around',
-      display: 'inline-block',
-      alignItems: 'center',
-      width: '80%'
-      
-      
-  },
-  pageRoot: {
-      
-    justifyContent: 'space-around',
-    display: 'inline-block',
-    alignItems: 'center',
-   
-    
+    // margin: '40px',
+    // width: '1300px',
+    // justify: 'center',
+    // maxWidth: '1380px'
 },
 }
 
@@ -79,7 +65,7 @@ class ResponsesPage extends Component {
         {content}
         <Nav />
         <ShopDescriptors/>
-        <div className='responsesDivs' style={styles.root}>
+        <div style={styles.root}>
         {viewerMessages}
         </div>
       </div>

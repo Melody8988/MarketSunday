@@ -13,8 +13,3 @@
   margin-left: 30px;
   text-align: center;
 }
-
-.cards{
-  display: flex;   
-  flex-wrap: wrap;
-}

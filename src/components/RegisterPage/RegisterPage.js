@@ -36,13 +36,13 @@ class RegisterPage extends Component {
             this.props.history.push('/home');
           } else {
             this.setState({
-              message: 'Ooops! That didn\'t work. The username might already be taken. Try again!',
+              message: 'That username might already be taken',
             });
           }
         })
         .catch(() => {
           this.setState({
-            message: 'Ooops! Something went wrong! Is the server running?',
+            message: 'Server needs to be running',
           });
         });
     }

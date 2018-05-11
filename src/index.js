@@ -6,11 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { createMuiTheme } from 'material-ui/styles';
-import blue from 'material-ui/colors/blue';
-
-
 import reducer from './redux/reducers';
-
 import App from './App';
 import rootSaga from './redux/sagas';
 

@@ -1,3 +1,4 @@
+// SECURITY DIRECTIONS GIVEN
 const badSecret = `
 ----------------------------
 

@@ -1,3 +1,6 @@
+//This componemt is called from FrontPage.js file
+//It is esentially a duplicate of the ManagePage.js but does not have editing rights 
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MessageInputForm from '../ManagePage/MessageInputForm'
@@ -8,6 +11,7 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 
 const styles = {
+    //Grid's styling 
     root: {
         flexWrap: 'wrap',
         display: 'flex',
@@ -16,6 +20,7 @@ const styles = {
         justify: 'center',
         maxWidth: '1140px'
     },
+    //Card's styling
     card: {
         padding: '15px',
         margin: '20px',
