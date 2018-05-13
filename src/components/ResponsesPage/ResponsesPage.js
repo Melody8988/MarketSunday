@@ -12,12 +12,16 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 import Button from 'material-ui/Button';
 
 const styles = {
-  root: {
-    // margin: '40px',
-    // width: '1300px',
-    // justify: 'center',
-    // maxWidth: '1380px'
-},
+  welcome: {
+    fontFamily: 'New Century Schoolbook, serif',
+    fontSize: '30px',
+    textAlign: 'center',
+  },
+  manage: {
+    fontFamily: 'Lato',
+    textAlign: 'center',
+    marginBottom: '30px'
+  }
 }
 
 class ResponsesPage extends Component {
@@ -45,8 +49,8 @@ class ResponsesPage extends Component {
       content = (
         <div>
           <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
-          <div id="welcome" className='welcome'>Welcome, {this.props.user.userName}!<br /></div>
-          <div className='welcome'>View all comments and requests</div></div>
+          <div style={styles.welcome}>Welcome, {this.props.user.userName}!<br /></div>
+          <div style={styles.manage}>-View all comments and requests-</div></div>
       );
     }
 

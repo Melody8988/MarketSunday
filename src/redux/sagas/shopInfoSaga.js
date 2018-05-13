@@ -5,16 +5,17 @@ import swal from 'sweetalert';
 //SAGA TO GET IMAGES FROM DB
 function* getShopInfoSaga(action) {
     console.log('in getShopInfoSaga')
+    console.log(action)
     try {
         console.log('ACTION:', action)
         const allShopInfo = yield call(axios.get, '/api/shopInfo', action.payload);
-        console.log('got items', allShopInfo);
+        console.log('got SHOPINFO', allShopInfo);
         yield put({
             type: 'SET_SHOP',
             payload: allShopInfo.data
         })
     } catch (error) {
-        console.log('imageSaga ERROR', error)
+        console.log('getShopInfoSaga ERROR', error)
     }
 }
 

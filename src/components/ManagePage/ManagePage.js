@@ -28,10 +28,14 @@ const styles = {
   break: {
     height: '70px'
   }, 
-  welcomeDiv: {
-    backgroundColor: '#a1d8ed',
-    width: '30px',
-    textAlign: 'center'
+  welcome: {
+    fontFamily: 'New Century Schoolbook, serif',
+    fontSize: '30px',
+    textAlign: 'center',
+  },
+  manage: {
+    fontFamily: 'Lato',
+    textAlign: 'center',
   }
 };
 
@@ -102,17 +106,19 @@ class ManagePage extends Component {
       )
     })
 
+    // let shopInfo = this.props.reduxstate.shopInfoReducer
+    console.log('HEREEEE', this.props.reduxState.shopInfoReducer)
     //if the user is logged in, show a greeting and give log out option
     let content = null;
     if (this.props.user.userName) {
       content = (
         <div >
           <Button color="secondary" className='logOut' onClick={this.logout}>Log Out</Button>
-          <div style={styles.welcomeDiv}>
-          <div id="welcome" className='welcome'>Welcome, {this.props.user.userName}!<br /></div>
-          <div className='welcome'>Manage your products here</div>
-          <p>{this.props.shop_name}</p>
-          </div>
+        
+          <div style={styles.welcome}>Welcome, {this.props.user.userName}!<br /></div>
+          <div style={styles.manage} >-Manage your products here-</div>
+          {/* <div>HERE: {shopInfo}</div> */}
+      
           </div>
       );
     }

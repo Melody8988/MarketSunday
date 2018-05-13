@@ -105,12 +105,12 @@ body {
 .loginPrompt{
     font-family: 'Helvetica';
     font-weight: 5;
-    color: white;
+    color: #2d64bc;
     
 }
 
 form {
-    background-color: #383838;
+    background-color: #d6e5ff;
     width: 30%;
     height: 30%px;
     margin: 90px auto;

@@ -4,14 +4,15 @@ Have you ever thought of starting a small buisness on the side or selling hand-m
 The app MarketSunday gives artists and small entrepreneurs their own simple, easy space, to show what they've made and get feedback from potiential buyers. 
 
 # Built With
-postgreSQL
-Node.js
-Express
-React, Redux
-Passport.js
-SweetAlerts
-Filestack image upload API
-material-UI
+*Express
+*Filestack image upload API
+*Material-UI
+*Node.js
+*Passport.js
+*PostgreSQL
+*React, Redux
+*SweetAlerts
+
 
 # Database
 
@@ -40,6 +41,8 @@ CREATE TABLE "viewermessages" (
   "galleryitems_id" integer NOT NULL REFERENCES galleryitems
 );
 ```
+
+![picture alt](large-botanical.jpeg)
 
 ## Heroku
 

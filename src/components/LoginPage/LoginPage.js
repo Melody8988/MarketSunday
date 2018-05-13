@@ -66,7 +66,7 @@ class LoginPage extends Component {
         { this.renderAlert() }
         <div className='imageDiv'>
         <form >
-          <h1 className='loginPrompt'>Login</h1>
+          <h1 className='loginPrompt'>Please sign in:</h1>
           <div>
             <label htmlFor="username">
               <input
@@ -87,7 +87,7 @@ class LoginPage extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               /><br/>
-              <Button onClick={this.login}color="secondary">Log In</Button>
+              <Button onClick={this.login}color="primary">Log In</Button>
             </label>
           </div>
           <div>
