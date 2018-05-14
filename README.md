@@ -13,6 +13,22 @@ The app MarketSunday gives artists and small entrepreneurs their own simple, eas
 * React, Redux
 * SweetAlerts
 
+# Get the Code on your computer: 
+
+run
+```
+npm install
+```
+to get all dependancies
+
+# Sign In
+Use this dummy account to view the app as a shop owner: 
+
+USERNAME: 
+newUser
+
+PASSWORD: 
+1234
 
 # Database
 
@@ -43,6 +59,8 @@ CREATE TABLE "viewermessages" (
 ```
 Front Page Example: 
 ![Screenshot](FrontPage.png)
+
+
 
 Responses Page Example:
 ![Screenshot](ResponsesPage.png)
