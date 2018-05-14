@@ -57,6 +57,9 @@ class FrontPage extends Component {
 
             <div>
                 <div className='entryPanel'>
+                <div>
+                    {/* <img class="msLogo" src="logo/msLogo.png" height="220" alt="Market Sunday Logo"></img> */}
+                    </div>
                     <p className='appLogo'>MarketSunday</p>
                     <p className='loginBtn'>Are you a shop owner?  <Button><Link to="/home">Login</Link></Button></p>
                 </div>

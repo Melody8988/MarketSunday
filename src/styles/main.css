@@ -66,6 +66,11 @@ body {
 
 .appLogo{
     margin-left: 10px;
+    
+}
+
+.msLogo{
+    /* background-image: url("msLogo.png"); */
 }
 
 .loginBtn{
