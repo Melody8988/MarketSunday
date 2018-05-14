@@ -13,22 +13,20 @@ The app MarketSunday gives artists and small entrepreneurs their own simple, eas
 * React, Redux
 * SweetAlerts
 
-# Get the Code on your computer: 
+# Get the Code: 
 
-run
+run in terminal to get all dependancies: 
 ```
 npm install
 ```
-to get all dependancies
+
 
 # Sign In
+
 Use this dummy account to view the app as a shop owner: 
 
-USERNAME: 
-newUser
-
-PASSWORD: 
-1234
+USERNAME: newUser
+PASSWORD: 1234
 
 # Database
 
