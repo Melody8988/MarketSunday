@@ -41,8 +41,11 @@ CREATE TABLE "viewermessages" (
   "galleryitems_id" integer NOT NULL REFERENCES galleryitems
 );
 ```
-
+Front Page Example: 
 ![Screenshot](FrontPage.png)
+
+Responses Page Example:
+![Screenshot](ResponsesPage.png)
 
 ## Heroku
 
