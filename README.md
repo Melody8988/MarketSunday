@@ -42,7 +42,7 @@ CREATE TABLE "viewermessages" (
 );
 ```
 
-![picture alt]('styles/')
+![Alt text]('/FrontPage.png')
 
 ## Heroku
 
