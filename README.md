@@ -26,6 +26,7 @@ npm install
 Use this dummy account to view the app as a shop owner: 
 
 USERNAME: newUser
+
 PASSWORD: 1234
 
 # Database
