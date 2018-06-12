@@ -20,6 +20,14 @@ run in terminal to get all dependancies:
 npm install
 ```
 
+to get the development environment running run:
+```
+npm run server
+```
+and in a new terminal tab, run:
+```
+npm run client
+```
 
 # Sign In
 
@@ -59,10 +67,9 @@ CREATE TABLE "viewermessages" (
 Front Page Example: 
 ![Screenshot](FrontPage.png)
 
-
-
 Responses Page Example:
 ![Screenshot](ResponsesPage.png)
 
-## Heroku
+#Summary
 
+text here to commit 
