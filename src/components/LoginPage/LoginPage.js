@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import Button from 'material-ui/Button';
@@ -87,11 +87,15 @@ class LoginPage extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               /><br/>
-              <Button onClick={this.login}color="primary">Log In</Button>
+              <Button onClick={this.login} color="primary">Log In</Button>
             </label>
           </div>
           <div>
-            {/* <Link to="/register">Register</Link> */}
+
+            {/* Click this link to register as a shop owner  */}
+
+            <Button color="primary"> <Link to="/register">Register</Link></Button>
+           
           </div>
         </form>
         </div>

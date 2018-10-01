@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MessageInputForm from '../ManagePage/MessageInputForm'
 
-//CARDS
+//CARDS//
 import Card, { CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';

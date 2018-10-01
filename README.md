@@ -69,7 +69,3 @@ Front Page Example:
 
 Responses Page Example:
 ![Screenshot](ResponsesPage.png)
-
-#Summary
-
-text here to commit 
